@@ -7,17 +7,28 @@
 //
 
 #import "AppDelegate.h"
+#import "StoryWindowController.h"
 
 @interface AppDelegate ()
-
-@property (nonatomic, assign) IBOutlet NSWindow *window;
+@property (nonatomic, retain) StoryWindowController *storyWindowController;
 @end
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+- (void)dealloc {
+    self.storyWindowController = nil;
+    [super dealloc];
 }
+
+
+#pragma mark -
+#pragma mark NSApplicationDelegate
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    self.storyWindowController = [[[StoryWindowController alloc] init] autorelease];
+    [_storyWindowController showWindow:nil];
+}
+
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application

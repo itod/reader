@@ -7,7 +7,13 @@
 //
 
 #import "PageRenderer.h"
+#import "Page.h"
+#import "Phrase.h"
 
 @implementation PageRenderer
+
+- (void)render:(Page *)page inContext:(CGContextRef)ctx {
+    
+}
 
 @end

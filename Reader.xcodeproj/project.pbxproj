@@ -11,6 +11,10 @@
 		D309F7C91C46C89E00ED68C0 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7C81C46C89E00ED68C0 /* Page.m */; };
 		D309F7CC1C46C8B000ED68C0 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7CB1C46C8B000ED68C0 /* Story.m */; };
 		D309F7D01C46C9A700ED68C0 /* Phrase.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7CF1C46C9A700ED68C0 /* Phrase.m */; };
+		D309F7D41C46D2D900ED68C0 /* StoryWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7D21C46D2D900ED68C0 /* StoryWindowController.m */; };
+		D309F7D51C46D2D900ED68C0 /* StoryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D309F7D31C46D2D900ED68C0 /* StoryWindowController.xib */; };
+		D309F7D81C46D37600ED68C0 /* PageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7D71C46D37600ED68C0 /* PageView.m */; };
+		D309F7DC1C46D3DA00ED68C0 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7DB1C46D3DA00ED68C0 /* Utils.m */; };
 		D3C3757A1C46C720002EC404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C375791C46C720002EC404 /* AppDelegate.m */; };
 		D3C3757D1C46C720002EC404 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C3757C1C46C720002EC404 /* main.m */; };
 		D3C3757F1C46C720002EC404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C3757E1C46C720002EC404 /* Assets.xcassets */; };
@@ -27,6 +31,14 @@
 		D309F7CD1C46C8CB00ED68C0 /* Serializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Serializable.h; sourceTree = "<group>"; };
 		D309F7CE1C46C9A700ED68C0 /* Phrase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phrase.h; sourceTree = "<group>"; };
 		D309F7CF1C46C9A700ED68C0 /* Phrase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phrase.m; sourceTree = "<group>"; };
+		D309F7D11C46D2D900ED68C0 /* StoryWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryWindowController.h; sourceTree = "<group>"; };
+		D309F7D21C46D2D900ED68C0 /* StoryWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryWindowController.m; sourceTree = "<group>"; };
+		D309F7D31C46D2D900ED68C0 /* StoryWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoryWindowController.xib; sourceTree = "<group>"; };
+		D309F7D61C46D37600ED68C0 /* PageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageView.h; sourceTree = "<group>"; };
+		D309F7D71C46D37600ED68C0 /* PageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageView.m; sourceTree = "<group>"; };
+		D309F7D91C46D3C400ED68C0 /* ReaderMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReaderMac-Prefix.pch"; sourceTree = "<group>"; };
+		D309F7DA1C46D3DA00ED68C0 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		D309F7DB1C46D3DA00ED68C0 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		D3C375751C46C720002EC404 /* Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C375781C46C720002EC404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D3C375791C46C720002EC404 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -50,6 +62,8 @@
 		D309F7C31C46C87600ED68C0 /* Reader */ = {
 			isa = PBXGroup;
 			children = (
+				D309F7DA1C46D3DA00ED68C0 /* Utils.h */,
+				D309F7DB1C46D3DA00ED68C0 /* Utils.m */,
 				D309F7CD1C46C8CB00ED68C0 /* Serializable.h */,
 				D309F7C41C46C88B00ED68C0 /* PageRenderer.h */,
 				D309F7C51C46C88B00ED68C0 /* PageRenderer.m */,
@@ -83,11 +97,14 @@
 		D3C375771C46C720002EC404 /* ReaderMac */ = {
 			isa = PBXGroup;
 			children = (
+				D3C375801C46C720002EC404 /* MainMenu.xib */,
 				D3C375781C46C720002EC404 /* AppDelegate.h */,
 				D3C375791C46C720002EC404 /* AppDelegate.m */,
-				D3C3757E1C46C720002EC404 /* Assets.xcassets */,
-				D3C375801C46C720002EC404 /* MainMenu.xib */,
-				D3C375831C46C720002EC404 /* Info.plist */,
+				D309F7D11C46D2D900ED68C0 /* StoryWindowController.h */,
+				D309F7D21C46D2D900ED68C0 /* StoryWindowController.m */,
+				D309F7D31C46D2D900ED68C0 /* StoryWindowController.xib */,
+				D309F7D61C46D37600ED68C0 /* PageView.h */,
+				D309F7D71C46D37600ED68C0 /* PageView.m */,
 				D3C3757B1C46C720002EC404 /* Supporting Files */,
 			);
 			path = ReaderMac;
@@ -96,7 +113,10 @@
 		D3C3757B1C46C720002EC404 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D3C3757E1C46C720002EC404 /* Assets.xcassets */,
+				D3C375831C46C720002EC404 /* Info.plist */,
 				D3C3757C1C46C720002EC404 /* main.m */,
+				D309F7D91C46D3C400ED68C0 /* ReaderMac-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -158,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D309F7D51C46D2D900ED68C0 /* StoryWindowController.xib in Resources */,
 				D3C3757F1C46C720002EC404 /* Assets.xcassets in Resources */,
 				D3C375821C46C720002EC404 /* MainMenu.xib in Resources */,
 			);
@@ -170,12 +191,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D309F7DC1C46D3DA00ED68C0 /* Utils.m in Sources */,
 				D3C3757D1C46C720002EC404 /* main.m in Sources */,
 				D3C3757A1C46C720002EC404 /* AppDelegate.m in Sources */,
 				D309F7C91C46C89E00ED68C0 /* Page.m in Sources */,
 				D309F7CC1C46C8B000ED68C0 /* Story.m in Sources */,
 				D309F7D01C46C9A700ED68C0 /* Phrase.m in Sources */,
+				D309F7D81C46D37600ED68C0 /* PageView.m in Sources */,
 				D309F7C61C46C88B00ED68C0 /* PageRenderer.m in Sources */,
+				D309F7D41C46D2D900ED68C0 /* StoryWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +299,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "ReaderMac/ReaderMac-Prefix.pch";
 				INFOPLIST_FILE = ReaderMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.celestialteapot.ReaderMac;
@@ -287,6 +312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREFIX_HEADER = "ReaderMac/ReaderMac-Prefix.pch";
 				INFOPLIST_FILE = ReaderMac/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.celestialteapot.ReaderMac;

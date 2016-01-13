@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class Page;
+
 @interface PageRenderer : NSObject
 
+- (void)render:(Page *)page inContext:(CGContextRef)ctx;
 @end
