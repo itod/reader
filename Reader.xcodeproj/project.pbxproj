@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D309F7C61C46C88B00ED68C0 /* PageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7C51C46C88B00ED68C0 /* PageRenderer.m */; };
+		D309F7C91C46C89E00ED68C0 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7C81C46C89E00ED68C0 /* Page.m */; };
+		D309F7CC1C46C8B000ED68C0 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7CB1C46C8B000ED68C0 /* Story.m */; };
+		D309F7D01C46C9A700ED68C0 /* Phrase.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7CF1C46C9A700ED68C0 /* Phrase.m */; };
 		D3C3757A1C46C720002EC404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C375791C46C720002EC404 /* AppDelegate.m */; };
 		D3C3757D1C46C720002EC404 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C3757C1C46C720002EC404 /* main.m */; };
 		D3C3757F1C46C720002EC404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C3757E1C46C720002EC404 /* Assets.xcassets */; };
@@ -14,6 +18,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D309F7C41C46C88B00ED68C0 /* PageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageRenderer.h; sourceTree = "<group>"; };
+		D309F7C51C46C88B00ED68C0 /* PageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageRenderer.m; sourceTree = "<group>"; };
+		D309F7C71C46C89E00ED68C0 /* Page.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Page.h; sourceTree = "<group>"; };
+		D309F7C81C46C89E00ED68C0 /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
+		D309F7CA1C46C8B000ED68C0 /* Story.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Story.h; sourceTree = "<group>"; };
+		D309F7CB1C46C8B000ED68C0 /* Story.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Story.m; sourceTree = "<group>"; };
+		D309F7CD1C46C8CB00ED68C0 /* Serializable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Serializable.h; sourceTree = "<group>"; };
+		D309F7CE1C46C9A700ED68C0 /* Phrase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phrase.h; sourceTree = "<group>"; };
+		D309F7CF1C46C9A700ED68C0 /* Phrase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phrase.m; sourceTree = "<group>"; };
 		D3C375751C46C720002EC404 /* Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C375781C46C720002EC404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D3C375791C46C720002EC404 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -34,9 +47,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D309F7C31C46C87600ED68C0 /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				D309F7CD1C46C8CB00ED68C0 /* Serializable.h */,
+				D309F7C41C46C88B00ED68C0 /* PageRenderer.h */,
+				D309F7C51C46C88B00ED68C0 /* PageRenderer.m */,
+				D309F7CE1C46C9A700ED68C0 /* Phrase.h */,
+				D309F7CF1C46C9A700ED68C0 /* Phrase.m */,
+				D309F7C71C46C89E00ED68C0 /* Page.h */,
+				D309F7C81C46C89E00ED68C0 /* Page.m */,
+				D309F7CA1C46C8B000ED68C0 /* Story.h */,
+				D309F7CB1C46C8B000ED68C0 /* Story.m */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
 		D3C3756C1C46C720002EC404 = {
 			isa = PBXGroup;
 			children = (
+				D309F7C31C46C87600ED68C0 /* Reader */,
 				D3C375771C46C720002EC404 /* ReaderMac */,
 				D3C375761C46C720002EC404 /* Products */,
 			);
@@ -142,6 +172,10 @@
 			files = (
 				D3C3757D1C46C720002EC404 /* main.m in Sources */,
 				D3C3757A1C46C720002EC404 /* AppDelegate.m in Sources */,
+				D309F7C91C46C89E00ED68C0 /* Page.m in Sources */,
+				D309F7CC1C46C8B000ED68C0 /* Story.m in Sources */,
+				D309F7D01C46C9A700ED68C0 /* Phrase.m in Sources */,
+				D309F7C61C46C88B00ED68C0 /* PageRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +313,7 @@
 				D3C375881C46C720002EC404 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
