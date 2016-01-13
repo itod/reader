@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "Story.h"
+#import "StoryParser.h"
+#import "StoryAssembler.h"
 #import "StoryWindowController.h"
 
 @interface AppDelegate ()
@@ -29,6 +31,20 @@
     self.storyWindowController = [[[StoryWindowController alloc] init] autorelease];
     
     // load story
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cinderella" ofType:@"story"];
+    TDAssert([path length]);
+    
+    NSError *err = nil;
+    NSString *storyText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    
+    StoryAssembler *ass = [[[StoryAssembler alloc] init] autorelease];
+    StoryParser *parser = [[[StoryParser alloc] initWithDelegate:ass] autorelease];
+    
+    err = nil;
+    Story *story = [parser parseString:storyText error:&err];
+    
+    _storyWindowController.story = story;
+    
     [_storyWindowController showWindow:nil];
 }
 

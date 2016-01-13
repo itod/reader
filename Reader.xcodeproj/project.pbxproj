@@ -15,11 +15,75 @@
 		D309F7D51C46D2D900ED68C0 /* StoryWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D309F7D31C46D2D900ED68C0 /* StoryWindowController.xib */; };
 		D309F7D81C46D37600ED68C0 /* PageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7D71C46D37600ED68C0 /* PageView.m */; };
 		D309F7DC1C46D3DA00ED68C0 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7DB1C46D3DA00ED68C0 /* Utils.m */; };
+		D309F7E31C46D7DC00ED68C0 /* cinderella.story in Resources */ = {isa = PBXBuildFile; fileRef = D309F7E21C46D7DC00ED68C0 /* cinderella.story */; };
+		D309F7F91C46D86C00ED68C0 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D309F7EE1C46D84900ED68C0 /* PEGKit.framework */; };
+		D309F7FB1C46D88500ED68C0 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D309F7EE1C46D84900ED68C0 /* PEGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D323D98E1C46DB0F009111AC /* StoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D323D98D1C46DB0F009111AC /* StoryParser.m */; };
+		D323D9951C46DB6E009111AC /* StoryAssembler.m in Sources */ = {isa = PBXBuildFile; fileRef = D323D9941C46DB6E009111AC /* StoryAssembler.m */; };
 		D3C3757A1C46C720002EC404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C375791C46C720002EC404 /* AppDelegate.m */; };
 		D3C3757D1C46C720002EC404 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C3757C1C46C720002EC404 /* main.m */; };
 		D3C3757F1C46C720002EC404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C3757E1C46C720002EC404 /* Assets.xcassets */; };
 		D3C375821C46C720002EC404 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C375801C46C720002EC404 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D309F7ED1C46D84900ED68C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D3F8A48D175817DF00056188;
+			remoteInfo = PEGKit;
+		};
+		D309F7EF1C46D84900ED68C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D366C55418D1F29D00AF3EFB;
+			remoteInfo = libPEGKitOSX;
+		};
+		D309F7F11C46D84900ED68C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D317C12B18D1F5EB0036BE75;
+			remoteInfo = libPEGKitIOS;
+		};
+		D309F7F31C46D84900ED68C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D37D8DC61571A4F700CDB822;
+			remoteInfo = PEGKitTests;
+		};
+		D309F7F51C46D84900ED68C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D338302F171C923700CCE513;
+			remoteInfo = ParserGenApp;
+		};
+		D309F7F71C46D85800ED68C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D3F8A3DA175817DF00056188;
+			remoteInfo = PEGKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D309F7FA1C46D87500ED68C0 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D309F7FB1C46D88500ED68C0 /* PEGKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D309F7C41C46C88B00ED68C0 /* PageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageRenderer.h; sourceTree = "<group>"; };
@@ -39,6 +103,12 @@
 		D309F7D91C46D3C400ED68C0 /* ReaderMac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReaderMac-Prefix.pch"; sourceTree = "<group>"; };
 		D309F7DA1C46D3DA00ED68C0 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		D309F7DB1C46D3DA00ED68C0 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		D309F7E21C46D7DC00ED68C0 /* cinderella.story */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cinderella.story; path = res/cinderella.story; sourceTree = SOURCE_ROOT; };
+		D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEGKit.xcodeproj; path = lib/PEGKit/PEGKit.xcodeproj; sourceTree = "<group>"; };
+		D323D98C1C46DB0F009111AC /* StoryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryParser.h; sourceTree = "<group>"; };
+		D323D98D1C46DB0F009111AC /* StoryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryParser.m; sourceTree = "<group>"; };
+		D323D9931C46DB6E009111AC /* StoryAssembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryAssembler.h; sourceTree = "<group>"; };
+		D323D9941C46DB6E009111AC /* StoryAssembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryAssembler.m; sourceTree = "<group>"; };
 		D3C375751C46C720002EC404 /* Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C375781C46C720002EC404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D3C375791C46C720002EC404 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -53,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D309F7F91C46D86C00ED68C0 /* PEGKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,14 +144,41 @@
 				D309F7C81C46C89E00ED68C0 /* Page.m */,
 				D309F7CA1C46C8B000ED68C0 /* Story.h */,
 				D309F7CB1C46C8B000ED68C0 /* Story.m */,
+				D323D98C1C46DB0F009111AC /* StoryParser.h */,
+				D323D98D1C46DB0F009111AC /* StoryParser.m */,
+				D323D9931C46DB6E009111AC /* StoryAssembler.h */,
+				D323D9941C46DB6E009111AC /* StoryAssembler.m */,
 			);
 			path = Reader;
+			sourceTree = "<group>";
+		};
+		D309F7E41C46D7DF00ED68C0 /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				D309F7E21C46D7DC00ED68C0 /* cinderella.story */,
+			);
+			name = Stories;
+			path = ReaderMac;
+			sourceTree = "<group>";
+		};
+		D309F7E61C46D84900ED68C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D309F7EE1C46D84900ED68C0 /* PEGKit.framework */,
+				D309F7F01C46D84900ED68C0 /* libPEGKitOSX.a */,
+				D309F7F21C46D84900ED68C0 /* libPEGKitIOS.a */,
+				D309F7F41C46D84900ED68C0 /* PEGKitTests.xctest */,
+				D309F7F61C46D84900ED68C0 /* ParserGenApp.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D3C3756C1C46C720002EC404 = {
 			isa = PBXGroup;
 			children = (
+				D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */,
 				D309F7C31C46C87600ED68C0 /* Reader */,
+				D309F7E41C46D7DF00ED68C0 /* Stories */,
 				D3C375771C46C720002EC404 /* ReaderMac */,
 				D3C375761C46C720002EC404 /* Products */,
 			);
@@ -131,10 +229,12 @@
 				D3C375711C46C720002EC404 /* Sources */,
 				D3C375721C46C720002EC404 /* Frameworks */,
 				D3C375731C46C720002EC404 /* Resources */,
+				D309F7FA1C46D87500ED68C0 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D309F7F81C46D85800ED68C0 /* PBXTargetDependency */,
 			);
 			name = Reader;
 			productName = ReaderMac;
@@ -166,12 +266,56 @@
 			mainGroup = D3C3756C1C46C720002EC404;
 			productRefGroup = D3C375761C46C720002EC404 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D309F7E61C46D84900ED68C0 /* Products */;
+					ProjectRef = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D3C375741C46C720002EC404 /* Reader */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D309F7EE1C46D84900ED68C0 /* PEGKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PEGKit.framework;
+			remoteRef = D309F7ED1C46D84900ED68C0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D309F7F01C46D84900ED68C0 /* libPEGKitOSX.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPEGKitOSX.a;
+			remoteRef = D309F7EF1C46D84900ED68C0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D309F7F21C46D84900ED68C0 /* libPEGKitIOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libPEGKitIOS.a;
+			remoteRef = D309F7F11C46D84900ED68C0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D309F7F41C46D84900ED68C0 /* PEGKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = PEGKitTests.xctest;
+			remoteRef = D309F7F31C46D84900ED68C0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D309F7F61C46D84900ED68C0 /* ParserGenApp.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ParserGenApp.app;
+			remoteRef = D309F7F51C46D84900ED68C0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D3C375731C46C720002EC404 /* Resources */ = {
@@ -180,6 +324,7 @@
 			files = (
 				D309F7D51C46D2D900ED68C0 /* StoryWindowController.xib in Resources */,
 				D3C3757F1C46C720002EC404 /* Assets.xcassets in Resources */,
+				D309F7E31C46D7DC00ED68C0 /* cinderella.story in Resources */,
 				D3C375821C46C720002EC404 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,8 +336,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D323D98E1C46DB0F009111AC /* StoryParser.m in Sources */,
 				D309F7DC1C46D3DA00ED68C0 /* Utils.m in Sources */,
 				D3C3757D1C46C720002EC404 /* main.m in Sources */,
+				D323D9951C46DB6E009111AC /* StoryAssembler.m in Sources */,
 				D3C3757A1C46C720002EC404 /* AppDelegate.m in Sources */,
 				D309F7C91C46C89E00ED68C0 /* Page.m in Sources */,
 				D309F7CC1C46C8B000ED68C0 /* Story.m in Sources */,
@@ -204,6 +351,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D309F7F81C46D85800ED68C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PEGKit;
+			targetProxy = D309F7F71C46D85800ED68C0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D3C375801C46C720002EC404 /* MainMenu.xib */ = {

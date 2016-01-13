@@ -1,0 +1,14 @@
+@before {
+    PKTokenizer *t = self.tokenizer;
+    [t.symbolState add:@"!="];
+    [t.symbolState add:@"<="];
+    [t.symbolState add:@">="];
+    
+	t.whitespaceState.reportsWhitespaceTokens = YES;
+	self.assembly.preservesWhitespaceTokens = YES;
+}
+
+story = line+;
+line = (phraseSpec imageSpec)+ ';'!;
+phraseSpec = '{' (~'}')+ '}'!;
+imageSpec = '[' (~']')+ ']'!;
