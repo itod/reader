@@ -93,8 +93,6 @@
 
 - (void)advance:(NSInteger)pages {
     TDAssertMainThread();
-    TDAssert(_pageIndex > -1);
-    TDAssert(_pageIndex < [_pages count]);
 
     self.pageIndex += pages;
     

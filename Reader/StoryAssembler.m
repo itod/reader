@@ -26,7 +26,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.story = nil;
         self.pages = [NSMutableArray array];
         
         self.openCurly = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" doubleValue:0.0];
@@ -37,7 +36,6 @@
 
 
 - (void)dealloc {
-    self.story = nil;
     self.pages = nil;
     self.openCurly = nil;
     self.openSquare = nil;
@@ -52,7 +50,8 @@
     Story *story = [[[Story alloc] init] autorelease];
     story.pages = _pages;
     
-    self.story = story;
+    TDAssert(a.isStackEmpty);
+    a.target = story;
 }
 
 

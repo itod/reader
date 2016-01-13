@@ -6,7 +6,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="StoryWindowController">
             <connections>
-                <outlet property="pageRenderer" destination="Y4b-yr-sRY" id="To4-cg-B2l"/>
                 <outlet property="pageView" destination="6Xx-Hv-6LG" id="br1-TE-MF8"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -25,6 +24,9 @@
                     <customView id="6Xx-Hv-6LG" customClass="PageView">
                         <rect key="frame" x="0.0" y="20" width="480" height="250"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <connections>
+                            <outlet property="pageRenderer" destination="Y4b-yr-sRY" id="rLK-Os-eJt"/>
+                        </connections>
                     </customView>
                 </subviews>
             </view>
@@ -32,6 +34,10 @@
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
         </window>
-        <customObject id="Y4b-yr-sRY" customClass="PageRenderer"/>
+        <customObject id="Y4b-yr-sRY" customClass="PageRenderer">
+            <connections>
+                <outlet property="delegate" destination="6Xx-Hv-6LG" id="O6M-rX-9GQ"/>
+            </connections>
+        </customObject>
     </objects>
 </document>

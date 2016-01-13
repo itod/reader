@@ -21,8 +21,10 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)render:(Page *)page inContext:(CGContextRef)ctx {
+- (void)render:(Page *)page inContext:(CGContextRef)ctx bounds:(CGRect)bounds; {
     TDAssertMainThread();
+    
+    
 }
 
 @end

@@ -10,10 +10,22 @@
 
 @implementation PageView
 
+- (void)dealloc {
+    self.pageRenderer = nil;
+    self.page = nil;
+    [super dealloc];
+}
+
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    // Drawing code here.
+    if (!_page) return;
+
+    CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
+    
+    TDAssert(_pageRenderer);
+    [_pageRenderer render:_page inContext:ctx bounds:[self bounds]];
 }
 
 @end

@@ -7,7 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "PageRenderer.h"
 
-@interface PageView : NSView
+@class Page;
 
+@interface PageView : NSView <PageRendererDelegate>
+
+@property (nonatomic, retain) IBOutlet PageRenderer *pageRenderer;
+@property (nonatomic, retain) Page *page;
 @end

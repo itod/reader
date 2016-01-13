@@ -8,6 +8,7 @@
 
 #import "StoryWindowController.h"
 #import "Story.h"
+#import "PageView.h"
 
 @interface StoryWindowController ()
 
@@ -23,7 +24,6 @@
 
 - (void)dealloc {
     self.pageView = nil;
-    self.pageRenderer = nil;
     self.story = nil;
     [super dealloc];
 }
@@ -37,9 +37,9 @@
     
     TDAssertMainThread();
     TDAssert(_pageView);
-    TDAssert(_pageRenderer);
     TDAssert(_story);
 
+    [self nextPage:nil];
 }
 
 
@@ -56,9 +56,12 @@
 - (IBAction)nextPage:(id)sender {
     TDAssertMainThread();
  
+    TDAssert(_story);
     [_story advance:1];
-    Page *page = [_story currentPage];
     
+    Page *page = [_story currentPage];
+    _pageView.page = page;
+    [_pageView setNeedsDisplay:YES];
 }
 
 

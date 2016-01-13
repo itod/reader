@@ -7,19 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "PageRenderer.h"
 
 @class PageView;
-@class PageRenderer;
 @class Story;
 
-@interface StoryWindowController : NSWindowController <PageRendererDelegate>
+@interface StoryWindowController : NSWindowController
 
 - (IBAction)prevPage:(id)sender;
 - (IBAction)nextPage:(id)sender;
 
 @property (nonatomic, retain) IBOutlet PageView *pageView;
-@property (nonatomic, retain) IBOutlet PageRenderer *pageRenderer;
 
 @property (nonatomic, retain) Story *story;
 @end
