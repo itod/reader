@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Story.h"
 #import "StoryWindowController.h"
 
 @interface AppDelegate ()
@@ -26,6 +27,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     self.storyWindowController = [[[StoryWindowController alloc] init] autorelease];
+    
+    // load story
     [_storyWindowController showWindow:nil];
 }
 

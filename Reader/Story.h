@@ -8,7 +8,13 @@
 
 #import "Serializable.h"
 
+@class Page;
+
 @interface Story : NSObject <NSCopying, Serializable>
 
+- (Page *)currentPage;
+- (void)advance:(NSInteger)pages;
+
 @property (nonatomic, copy) NSArray *pages;
+@property (nonatomic, assign, readonly) NSInteger pageIndex;
 @end

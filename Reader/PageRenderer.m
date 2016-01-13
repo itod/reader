@@ -12,8 +12,17 @@
 
 @implementation PageRenderer
 
+- (void)dealloc {
+    self.delegate = nil;
+    [super dealloc];
+}
+
+
+#pragma mark -
+#pragma mark Public
+
 - (void)render:(Page *)page inContext:(CGContextRef)ctx {
-    
+    TDAssertMainThread();
 }
 
 @end

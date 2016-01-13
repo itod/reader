@@ -9,8 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @class Page;
+@class PageRenderer;
+
+@protocol PageRendererDelegate <NSObject>
+
+@end
 
 @interface PageRenderer : NSObject
 
 - (void)render:(Page *)page inContext:(CGContextRef)ctx;
+
+@property (nonatomic, assign) id <PageRendererDelegate>delegate;
 @end

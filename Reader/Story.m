@@ -7,9 +7,22 @@
 //
 
 #import "Story.h"
-#import "PAge.h"
+#import "Page.h"
+
+@interface Story ()
+@property (nonatomic, assign, readwrite) NSInteger pageIndex;
+@end
 
 @implementation Story
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.pageIndex = -1;
+    }
+    return self;
+}
+
 
 - (void)dealloc {
     self.pages = nil;
@@ -64,5 +77,30 @@
     
     return plist;
 }
+
+
+#pragma mark -
+#pragma mark Public
+
+- (Page *)currentPage {
+    TDAssertMainThread();
+    TDAssert(_pageIndex > -1);
+    TDAssert(_pageIndex < [_pages count]);
+    
+    return _pages[_pageIndex];
+}
+
+
+- (void)advance:(NSInteger)pages {
+    TDAssertMainThread();
+    TDAssert(_pageIndex > -1);
+    TDAssert(_pageIndex < [_pages count]);
+
+    self.pageIndex += pages;
+    
+    TDAssert(_pageIndex > -1);
+    TDAssert(_pageIndex < [_pages count]);
+}
+
 
 @end
