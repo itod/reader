@@ -55,7 +55,7 @@
     
     do {
         [self line_]; 
-    } while ([self speculate:^{ [self line_]; }]);
+    } while ([self predicts:TOKEN_KIND_BUILTIN_ANY]);
 
     [self fireDelegateSelector:@selector(parser:didMatchStory:)];
 }
