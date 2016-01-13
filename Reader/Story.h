@@ -10,4 +10,5 @@
 
 @interface Story : NSObject <NSCopying, Serializable>
 
+@property (nonatomic, copy) NSArray *pages;
 @end
