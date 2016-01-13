@@ -13,6 +13,7 @@
 
 #import <PEGKit/PKAssembly.h>
 #import <PEGKit/PKToken.h>
+#import "NSArray+PEGKitAdditions.h"
 
 @interface StoryAssembler ()
 @property (nonatomic, retain) NSMutableArray *pages;
@@ -56,7 +57,7 @@
 
 
 - (void)parser:(PKParser *)p didMatchLine:(PKAssembly *)a {
-    NSArray *phrases = [a objectsAbove:nil];
+    NSArray *phrases = [[a objectsAbove:nil] reversedArray];
     
     Page *page = [[[Page alloc] init] autorelease];
     page.phrases = phrases;
@@ -67,34 +68,24 @@
 
 
 - (void)parser:(PKParser *)p didMatchPhraseSpec:(PKAssembly *)a {
-    NSArray *toks = [a objectsAbove:_openCurly];
-    [a pop];
-    
-    NSMutableString *str = [NSMutableString string];
-    for (PKToken *tok in [toks reverseObjectEnumerator]) {
-        [str appendString:tok.stringValue];
-    }
+    PKToken *tok = [a pop];
+    TDAssert(tok.isDelimitedString);
     
     Phrase *phrase = [[[Phrase alloc] init] autorelease];
-    phrase.text = str;
+    phrase.text = [tok.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"()"]];
     
     [a push:phrase];
 }
 
 
 - (void)parser:(PKParser *)p didMatchImageSpec:(PKAssembly *)a {
-    NSArray *toks = [a objectsAbove:_openSquare];
-    [a pop];
-    
-    NSMutableString *str = [NSMutableString string];
-    for (PKToken *tok in [toks reverseObjectEnumerator]) {
-        [str appendString:tok.stringValue];
-    }
+    PKToken *tok = [a pop];
+    TDAssert(tok.isDelimitedString);
     
     Phrase *phrase = [a pop];
     TDAssert([phrase isKindOfClass:[Phrase class]]);
     
-    phrase.imageName = str;
+    phrase.imageName = [tok.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"[]"]];
     
     [a push:phrase];
 }

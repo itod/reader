@@ -17,6 +17,11 @@
 }
 
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"<%@ %p (%@)[%@]>", [self class], self, _text, _imageName];
+}
+
+
 #pragma mark -
 #pragma mark NSCopying
 

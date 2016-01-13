@@ -4,11 +4,14 @@
     [t.symbolState add:@"<="];
     [t.symbolState add:@">="];
     
-	t.whitespaceState.reportsWhitespaceTokens = YES;
-	self.assembly.preservesWhitespaceTokens = YES;
+    [t.delimitState addStartMarker:@"(" endMarker:@")" allowedCharacterSet:nil];
+    [t.delimitState addStartMarker:@"[" endMarker:@"]" allowedCharacterSet:nil];
+    [t setTokenizerState:t.delimitState from:'(' to:')'];
+    [t setTokenizerState:t.delimitState from:'[' to:'['];
 }
 
 story = line+;
 line = (phraseSpec imageSpec)+ ';'!;
-phraseSpec = '{' (~'}')+ '}'!;
-imageSpec = '[' (~']')+ ']'!;
+
+phraseSpec = %{'(', ')'};
+imageSpec = %{'[', ']'};
