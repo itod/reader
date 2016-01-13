@@ -65,4 +65,18 @@
     return plist;
 }
 
+
+#pragma mark -
+#pragma mark Public
+
+- (NSMutableString *)phraseText {
+    NSMutableString *str = [NSMutableString string];
+    
+    for (Phrase *phrase in _phrases) {
+        [str appendFormat:@"%@ ", phrase.text];
+    }
+    
+    return str;
+}
+
 @end

@@ -10,7 +10,24 @@
 #import "Page.h"
 #import "Phrase.h"
 
+static NSMutableDictionary *sAttrs = nil;
+
 @implementation PageRenderer
+
++ (void)initialize {
+    if ([PageRenderer class] == self) {
+        id paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
+        [paraStyle setAlignment:NSCenterTextAlignment];
+        [paraStyle setLineBreakMode:NSLineBreakByClipping];
+        
+        sAttrs = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                           [NSFont systemFontOfSize:10.0], NSFontAttributeName,
+                             [NSColor blackColor], NSForegroundColorAttributeName,
+                                                           paraStyle, NSParagraphStyleAttributeName,
+                  nil];
+    }
+}
+
 
 - (void)dealloc {
     self.delegate = nil;
@@ -21,9 +38,13 @@
 #pragma mark -
 #pragma mark Public
 
-- (void)render:(Page *)page inContext:(CGContextRef)ctx bounds:(CGRect)bounds; {
+- (void)render:(Page *)page inContext:(CGContextRef)ctx bounds:(CGRect)bounds {
     TDAssertMainThread();
     
+    NSString *txt = [page phraseText];
+    NSAttributedString *str = [[[NSAttributedString alloc] initWithString:txt attributes:sAttrs] autorelease];
+    
+    [str drawInRect:bounds];
     
 }
 
