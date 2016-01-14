@@ -10,6 +10,8 @@
 #import "Page.h"
 #import "Phrase.h"
 
+#define MIN_FONT_SIZE 16.0
+
 static NSMutableDictionary *sAttrs = nil;
 
 @implementation PageRenderer
@@ -38,13 +40,37 @@ static NSMutableDictionary *sAttrs = nil;
 #pragma mark -
 #pragma mark Public
 
-- (void)render:(Page *)page inContext:(CGContextRef)ctx bounds:(CGRect)bounds {
-    TDAssertMainThread();
+static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, double hi, double lo) {
+    double mid = round(lo + (hi-lo)*0.5);
+    BOOL bail = mid <= MIN_FONT_SIZE+1.0;
+    if (bail) {
+        mid = MIN_FONT_SIZE;
+    }
     
-    NSString *txt = [page phraseText];
+    NSFont *font = [NSFont systemFontOfSize:mid];
+    sAttrs[NSFontAttributeName] = font;
+    
     NSAttributedString *str = [[[NSAttributedString alloc] initWithString:txt attributes:sAttrs] autorelease];
     CGSize size = [str size];
     
+    if (bail || size.width < availWidth) {
+        return str;
+    } else {
+        return TDStringSearch(txt, availWidth, hi*0.75, lo);
+    }
+}
+
+
+- (void)render:(Page *)page inContext:(CGContextRef)ctx bounds:(CGRect)bounds {
+    TDAssertMainThread();
+    
+    CGFloat availWidth = round(CGRectGetWidth(bounds));
+    
+    NSString *txt = [page phraseText];
+    
+    NSAttributedString *str = TDStringSearch(txt, availWidth, 200.0, MIN_FONT_SIZE);
+    CGSize size = [str size];
+
     [str drawInRect:CGRectMake(CGRectGetMinX(bounds), CGRectGetMidY(bounds)-size.height*0.5, CGRectGetWidth(bounds), size.height)];
     
 }
