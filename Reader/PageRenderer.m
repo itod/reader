@@ -21,9 +21,9 @@ static NSMutableDictionary *sAttrs = nil;
         [paraStyle setLineBreakMode:NSLineBreakByClipping];
         
         sAttrs = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                           [NSFont systemFontOfSize:10.0], NSFontAttributeName,
-                             [NSColor blackColor], NSForegroundColorAttributeName,
-                                                           paraStyle, NSParagraphStyleAttributeName,
+                  [NSFont systemFontOfSize:10.0], NSFontAttributeName,
+                  [NSColor blackColor], NSForegroundColorAttributeName,
+                  paraStyle, NSParagraphStyleAttributeName,
                   nil];
     }
 }
@@ -43,8 +43,9 @@ static NSMutableDictionary *sAttrs = nil;
     
     NSString *txt = [page phraseText];
     NSAttributedString *str = [[[NSAttributedString alloc] initWithString:txt attributes:sAttrs] autorelease];
+    CGSize size = [str size];
     
-    [str drawInRect:bounds];
+    [str drawInRect:CGRectMake(CGRectGetMinX(bounds), CGRectGetMidY(bounds)-size.height*0.5, CGRectGetWidth(bounds), size.height)];
     
 }
 

@@ -17,6 +17,11 @@
 }
 
 
+- (BOOL)isFlipped {
+    return YES;
+}
+
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
