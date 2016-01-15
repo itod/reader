@@ -11,6 +11,8 @@
 #import "Phrase.h"
 
 #define MIN_FONT_SIZE 16.0
+#define IMG_MARGIN 10.0
+#define FUDGE 10.0
 
 static NSMutableDictionary *sAttrs = nil;
 
@@ -65,14 +67,40 @@ static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, dou
     TDAssertMainThread();
     
     CGFloat availWidth = round(CGRectGetWidth(bounds));
+    CGRect textRect = CGRectZero;
     
-    NSString *txt = [page phraseText];
+    // Text
+    {
+        NSString *txt = [page phraseText];
+        NSAttributedString *str = TDStringSearch(txt, availWidth, 200.0, MIN_FONT_SIZE);
+        CGSize size = [str size];
+        textRect = CGRectMake(round(CGRectGetMidX(bounds)-size.width*0.5), round(CGRectGetHeight(bounds)*0.75-size.height), round(size.width), round(size.height));
+        [str drawInRect:textRect];
+    }
     
-    NSAttributedString *str = TDStringSearch(txt, availWidth, 200.0, MIN_FONT_SIZE);
-    CGSize size = [str size];
-
-    [str drawInRect:CGRectMake(CGRectGetMinX(bounds), CGRectGetMidY(bounds)-size.height*0.5, CGRectGetWidth(bounds), size.height)];
-    
+    // Images
+    {
+        CGFloat x = CGRectGetMinX(textRect);
+        CGFloat y = CGRectGetMinY(textRect);
+        CGFloat maxExtent = y - CGRectGetMinY(bounds);
+        
+        NSAttributedString *wsStr = [[[NSAttributedString alloc] initWithString:@" " attributes:sAttrs] autorelease];
+        CGFloat wsWidth = [wsStr size].width;
+        
+        for (Phrase *phrase in page.phrases) {
+            NSAttributedString *subStr = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
+            CGSize size = [subStr size];
+            CGRect phraseRect = CGRectMake(x+FUDGE, y, size.width, size.height);
+            CGContextStrokeRect(ctx, phraseRect);
+            
+            CGFloat extent = round(MIN(size.width, maxExtent));
+            
+            CGRect imgRect = CGRectInset(CGRectMake(CGRectGetMinX(phraseRect), y-extent, extent, extent), IMG_MARGIN, IMG_MARGIN);
+            CGContextStrokeRect(ctx, imgRect);
+            
+            x += size.width + wsWidth;
+        }
+    }
 }
 
 @end
