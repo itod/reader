@@ -12,7 +12,6 @@
 
 #define MIN_FONT_SIZE 16.0
 #define IMG_MARGIN 10.0
-#define FUDGE 10.0
 
 static NSMutableDictionary *sAttrs = nil;
 
@@ -42,7 +41,8 @@ static NSMutableDictionary *sAttrs = nil;
 #pragma mark -
 #pragma mark Public
 
-static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, double hi, double lo) {
+static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, double hi) {
+    double lo = MIN_FONT_SIZE;
     double mid = round(lo + (hi-lo)*0.5);
     BOOL bail = mid <= MIN_FONT_SIZE+1.0;
     if (bail) {
@@ -58,7 +58,7 @@ static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, dou
     if (bail || size.width < availWidth) {
         return str;
     } else {
-        return TDStringSearch(txt, availWidth, hi*0.75, lo);
+        return TDStringSearch(txt, availWidth, hi*0.75);
     }
 }
 
@@ -72,7 +72,7 @@ static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, dou
     // Text
     {
         NSString *txt = [page phraseText];
-        NSAttributedString *str = TDStringSearch(txt, availWidth, 200.0, MIN_FONT_SIZE);
+        NSAttributedString *str = TDStringSearch(txt, availWidth, 200.0);
         CGSize size = [str size];
         textRect = CGRectMake(round(CGRectGetMidX(bounds)-size.width*0.5), round(CGRectGetHeight(bounds)*0.75-size.height), round(size.width), round(size.height));
         [str drawInRect:textRect];
@@ -90,7 +90,7 @@ static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, dou
         for (Phrase *phrase in page.phrases) {
             NSAttributedString *subStr = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
             CGSize size = [subStr size];
-            CGRect phraseRect = CGRectMake(x+FUDGE, y, size.width, size.height);
+            CGRect phraseRect = CGRectMake(x, y, size.width, size.height);
             CGContextStrokeRect(ctx, phraseRect);
             
             CGFloat extent = round(MIN(size.width, maxExtent));
