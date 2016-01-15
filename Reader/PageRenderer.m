@@ -12,7 +12,7 @@
 
 #define MIN_FONT_SIZE 16.0
 #define IMG_MARGIN 10.0
-#define TOLERANCE 80.0
+#define TOLERANCE 10.0
 
 static NSMutableDictionary *sAttrs = nil;
 
@@ -65,7 +65,7 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
     } else if (diff > TOLERANCE) {
         return TDStringBinarySearch(txt, availWidth, mid, lo, count);
     } else {
-        TDCAssert(diff < TOLERANCE);
+        TDCAssert(diff < 0.0 && fabs(diff) > TOLERANCE);
         return TDStringBinarySearch(txt, availWidth, hi, mid, count);
     }
 }
@@ -80,7 +80,7 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
     // Text
     {
         NSString *txt = [page phraseText];
-        NSAttributedString *str = TDStringBinarySearch(txt, availWidth, 200.0, MIN_FONT_SIZE, 0);
+        NSAttributedString *str = TDStringBinarySearch(txt, availWidth-IMG_MARGIN*4.0, 200.0, MIN_FONT_SIZE, 0);
         CGSize size = [str size];
         textRect = CGRectMake(round(CGRectGetMidX(bounds)-size.width*0.5), round(CGRectGetHeight(bounds)*0.75-size.height), round(size.width), round(size.height));
         [str drawInRect:textRect];
