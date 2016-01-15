@@ -76,29 +76,54 @@ static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, dou
         CGSize size = [str size];
         textRect = CGRectMake(round(CGRectGetMidX(bounds)-size.width*0.5), round(CGRectGetHeight(bounds)*0.75-size.height), round(size.width), round(size.height));
         [str drawInRect:textRect];
+        CGContextStrokeRect(ctx, textRect);
+
     }
     
     // Images
     {
-        CGFloat x = CGRectGetMinX(textRect);
-        CGFloat y = CGRectGetMinY(textRect);
-        CGFloat maxExtent = y - CGRectGetMinY(bounds);
+        NSUInteger phraseCount = [page.phrases count];
+        CGRect phraseRects[phraseCount];
+        CGRect imgRects[phraseCount];
+        CGFloat minImgExtent = MAXFLOAT;
         
-        NSAttributedString *wsStr = [[[NSAttributedString alloc] initWithString:@" " attributes:sAttrs] autorelease];
-        CGFloat wsWidth = [wsStr size].width;
+        {
+            CGFloat x = CGRectGetMinX(textRect);
+            CGFloat y = CGRectGetMinY(textRect);
+            CGFloat maxExtent = y - CGRectGetMinY(bounds);
+            
+            NSAttributedString *wsStr = [[[NSAttributedString alloc] initWithString:@" " attributes:sAttrs] autorelease];
+            CGFloat wsWidth = [wsStr size].width;
+
+            NSUInteger i = 0;
+            for (Phrase *phrase in page.phrases) {
+                NSAttributedString *subStr = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
+                CGSize size = [subStr size];
+                
+                // relative x-fudge needed here to offset apple's text drawing api
+                CGRect phraseRect = CGRectMake(x + size.width*0.05, y, size.width, size.height);
+                phraseRects[i] = phraseRect;
+                
+                CGFloat extent = round(MIN(size.width, maxExtent));
+                
+                CGRect imgRect = CGRectInset(CGRectMake(x, y-extent, extent, extent), IMG_MARGIN, IMG_MARGIN);
+                imgRects[i] = imgRect;
+                
+                x += size.width + wsWidth;
+                
+                minImgExtent = MIN(minImgExtent, extent);
+                i++;
+            }
+        }
         
-        for (Phrase *phrase in page.phrases) {
-            NSAttributedString *subStr = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
-            CGSize size = [subStr size];
-            CGRect phraseRect = CGRectMake(x, y, size.width, size.height);
+        for (NSUInteger i = 0; i < phraseCount; ++i) {
+            CGRect phraseRect = phraseRects[i];
             CGContextStrokeRect(ctx, phraseRect);
+            CGRect imgRect = imgRects[i];
             
-            CGFloat extent = round(MIN(size.width, maxExtent));
-            
-            CGRect imgRect = CGRectInset(CGRectMake(CGRectGetMinX(phraseRect), y-extent, extent, extent), IMG_MARGIN, IMG_MARGIN);
+            imgRect = CGRectMake(round(CGRectGetMidX(phraseRect)-minImgExtent*0.5), CGRectGetMaxY(imgRect)-minImgExtent, minImgExtent, minImgExtent);
+            imgRects[i] = imgRect;
             CGContextStrokeRect(ctx, imgRect);
-            
-            x += size.width + wsWidth;
         }
     }
 }
