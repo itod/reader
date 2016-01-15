@@ -12,6 +12,7 @@
 
 #define MIN_FONT_SIZE 16.0
 #define IMG_MARGIN 10.0
+#define TOLERANCE 80.0
 
 static NSMutableDictionary *sAttrs = nil;
 
@@ -41,11 +42,13 @@ static NSMutableDictionary *sAttrs = nil;
 #pragma mark -
 #pragma mark Public
 
-static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, double hi) {
-    double lo = MIN_FONT_SIZE;
+static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi, double lo, NSInteger count) {
+    //NSLog(@"%@", @(++count));
     double mid = round(lo + (hi-lo)*0.5);
-    BOOL bail = mid <= MIN_FONT_SIZE+1.0;
-    if (bail) {
+    BOOL bail = NO;
+    
+    if (mid <= MIN_FONT_SIZE+1.0) {
+        bail = YES;
         mid = MIN_FONT_SIZE;
     }
     
@@ -55,10 +58,15 @@ static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, dou
     NSAttributedString *str = [[[NSAttributedString alloc] initWithString:txt attributes:sAttrs] autorelease];
     CGSize size = [str size];
     
-    if (bail || size.width < availWidth) {
+    CGFloat diff = size.width - availWidth;
+    
+    if (bail || fabs(diff) <= TOLERANCE) {
         return str;
+    } else if (diff > TOLERANCE) {
+        return TDStringBinarySearch(txt, availWidth, mid, lo, count);
     } else {
-        return TDStringSearch(txt, availWidth, hi*0.75);
+        TDCAssert(diff < TOLERANCE);
+        return TDStringBinarySearch(txt, availWidth, hi, mid, count);
     }
 }
 
@@ -72,7 +80,7 @@ static NSAttributedString *TDStringSearch(NSString *txt, CGFloat availWidth, dou
     // Text
     {
         NSString *txt = [page phraseText];
-        NSAttributedString *str = TDStringSearch(txt, availWidth, 200.0);
+        NSAttributedString *str = TDStringBinarySearch(txt, availWidth, 200.0, MIN_FONT_SIZE, 0);
         CGSize size = [str size];
         textRect = CGRectMake(round(CGRectGetMidX(bounds)-size.width*0.5), round(CGRectGetHeight(bounds)*0.75-size.height), round(size.width), round(size.height));
         [str drawInRect:textRect];
