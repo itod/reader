@@ -120,18 +120,31 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
                 x += size.width + wsWidth;
                 
                 minImgExtent = MIN(minImgExtent, extent);
-                i++;
+                ++i;
             }
         }
         
-        for (NSUInteger i = 0; i < phraseCount; ++i) {
-            CGRect phraseRect = phraseRects[i];
-            CGContextStrokeRect(ctx, phraseRect);
-            CGRect imgRect = imgRects[i];
-            
-            imgRect = CGRectMake(round(CGRectGetMidX(phraseRect)-minImgExtent*0.5), CGRectGetMaxY(imgRect)-minImgExtent, minImgExtent, minImgExtent);
-            imgRects[i] = imgRect;
-            CGContextStrokeRect(ctx, imgRect);
+        {
+            NSUInteger i = 0;
+            for (Phrase *phrase in page.phrases) {
+                CGRect phraseRect = phraseRects[i];
+                CGContextStrokeRect(ctx, phraseRect);
+                CGRect imgRect = imgRects[i];
+                
+                imgRect = CGRectMake(round(CGRectGetMidX(phraseRect)-minImgExtent*0.5), CGRectGetMaxY(imgRect)-minImgExtent, minImgExtent, minImgExtent);
+                imgRects[i] = imgRect;
+                CGContextStrokeRect(ctx, imgRect);
+                
+                NSString *imgName = phrase.imageName;
+                NSImage *img = [NSImage imageNamed:imgName];
+                
+                if (img) {
+                    [img drawInRect:imgRect];
+                } else {
+                    NSLog(@"could not find image named: %@", imgName);
+                }
+                ++i;
+            }
         }
     }
 }
