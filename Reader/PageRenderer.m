@@ -13,7 +13,7 @@
 #define MIN_FONT_SIZE 16.0
 #define IMG_MARGIN 10.0
 #define TOLERANCE 10.0
-#define PHRASE_MARGIN 100.0
+#define PHRASE_MARGIN_RATIO 0.1
 
 static NSMutableDictionary *sAttrs = nil;
 
@@ -76,12 +76,14 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
     TDAssertMainThread();
     
     NSUInteger phraseCount = [page.phrases count];
+    CGFloat availWidth = round(CGRectGetWidth(bounds));
+    CGFloat phraseMargin = availWidth * PHRASE_MARGIN_RATIO;
     CGRect textRect = CGRectZero;
     
     // Calculate total text rect
     {
-        CGFloat totalPhraseMargin = ((phraseCount-1) * PHRASE_MARGIN);
-        CGFloat availWidth = round(CGRectGetWidth(bounds));
+        CGFloat totalPhraseMargin = ((phraseCount-1) * phraseMargin);
+
         NSString *txt = [page phraseText];
         NSAttributedString *str = TDStringBinarySearch(txt, availWidth-(IMG_MARGIN*4.0 + totalPhraseMargin), 200.0, MIN_FONT_SIZE, 0);
         CGSize size = [str size];
@@ -116,7 +118,7 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
                 CGRect imgRect = CGRectInset(CGRectMake(x, y-extent, extent, extent), IMG_MARGIN, IMG_MARGIN);
                 imgRects[i] = imgRect;
                 
-                x += size.width + PHRASE_MARGIN;
+                x += size.width + phraseMargin;
                 
                 minImgExtent = MIN(minImgExtent, extent);
                 ++i;
