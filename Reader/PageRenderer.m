@@ -13,6 +13,7 @@
 #define MIN_FONT_SIZE 16.0
 #define IMG_MARGIN 10.0
 #define TOLERANCE 10.0
+#define PHRASE_MARGIN 80.0
 
 static NSMutableDictionary *sAttrs = nil;
 
@@ -41,6 +42,35 @@ static NSMutableDictionary *sAttrs = nil;
 
 #pragma mark -
 #pragma mark Public
+
+static void TDFontSizeBinarySearch(NSString *txt, CGFloat availWidth, double hi, double lo, NSInteger count) {
+    //NSLog(@"%@", @(++count));
+    double mid = round(lo + (hi-lo)*0.5);
+    BOOL bail = NO;
+    
+    if (mid <= MIN_FONT_SIZE+1.0) {
+        bail = YES;
+        mid = MIN_FONT_SIZE;
+    }
+    
+    NSFont *font = [NSFont systemFontOfSize:mid];
+    sAttrs[NSFontAttributeName] = font;
+    
+    NSAttributedString *str = [[[NSAttributedString alloc] initWithString:txt attributes:sAttrs] autorelease];
+    CGSize size = [str size];
+    
+    CGFloat diff = size.width - availWidth;
+    
+    if (bail || fabs(diff) <= TOLERANCE) {
+        return;
+    } else if (diff > TOLERANCE) {
+        return TDFontSizeBinarySearch(txt, availWidth, mid, lo, count);
+    } else {
+        TDCAssert(diff < 0.0 && fabs(diff) > TOLERANCE);
+        return TDFontSizeBinarySearch(txt, availWidth, hi, mid, count);
+    }
+}
+
 
 static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi, double lo, NSInteger count) {
     //NSLog(@"%@", @(++count));
@@ -74,23 +104,27 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
 - (void)render:(Page *)page inContext:(CGContextRef)ctx bounds:(CGRect)bounds {
     TDAssertMainThread();
     
+    NSUInteger phraseCount = [page.phrases count];
+    CGFloat totalPhraseMargin = ((phraseCount-1) * PHRASE_MARGIN);
     CGFloat availWidth = round(CGRectGetWidth(bounds));
     CGRect textRect = CGRectZero;
+
+    NSString *txt = [page phraseText];
+    TDFontSizeBinarySearch(txt, availWidth-(IMG_MARGIN*4.0 + totalPhraseMargin), 200.0, MIN_FONT_SIZE, 0);
     
     // Text
     {
-        NSString *txt = [page phraseText];
-        NSAttributedString *str = TDStringBinarySearch(txt, availWidth-IMG_MARGIN*4.0, 200.0, MIN_FONT_SIZE, 0);
+        NSAttributedString *str = TDStringBinarySearch(txt, availWidth-(IMG_MARGIN*4.0 + totalPhraseMargin), 200.0, MIN_FONT_SIZE, 0);
         CGSize size = [str size];
-        textRect = CGRectMake(round(CGRectGetMidX(bounds)-size.width*0.5), round(CGRectGetHeight(bounds)*0.75-size.height), round(size.width), round(size.height));
-        [str drawInRect:textRect];
-        CGContextStrokeRect(ctx, textRect);
+        CGFloat strWidth = size.width + totalPhraseMargin;
+        textRect = CGRectMake(round(CGRectGetMidX(bounds)-strWidth*0.5), round(CGRectGetHeight(bounds)*0.75-size.height), round(strWidth), round(size.height));
+        //[str drawInRect:textRect];
+        //CGContextStrokeRect(ctx, textRect);
 
     }
     
-    // Images
+    // Calculate
     {
-        NSUInteger phraseCount = [page.phrases count];
         CGRect phraseRects[phraseCount];
         CGRect imgRects[phraseCount];
         CGFloat minImgExtent = MAXFLOAT;
@@ -100,8 +134,8 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
             CGFloat y = CGRectGetMinY(textRect);
             CGFloat maxExtent = y - CGRectGetMinY(bounds);
             
-            NSAttributedString *wsStr = [[[NSAttributedString alloc] initWithString:@" " attributes:sAttrs] autorelease];
-            CGFloat wsWidth = [wsStr size].width;
+//            NSAttributedString *wsStr = [[[NSAttributedString alloc] initWithString:@" " attributes:sAttrs] autorelease];
+//            CGFloat wsWidth = [wsStr size].width;
 
             NSUInteger i = 0;
             for (Phrase *phrase in page.phrases) {
@@ -117,13 +151,15 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
                 CGRect imgRect = CGRectInset(CGRectMake(x, y-extent, extent, extent), IMG_MARGIN, IMG_MARGIN);
                 imgRects[i] = imgRect;
                 
-                x += size.width + wsWidth;
+                //x += size.width + wsWidth + PHRASE_MARGIN;
+                x += size.width + PHRASE_MARGIN;
                 
                 minImgExtent = MIN(minImgExtent, extent);
                 ++i;
             }
         }
         
+        // Draw
         {
             NSUInteger i = 0;
             for (Phrase *phrase in page.phrases) {
@@ -143,6 +179,10 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
                 } else {
                     NSLog(@"could not find image named: %@", imgName);
                 }
+                
+                NSAttributedString *str = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
+                [str drawInRect:phraseRect];
+
                 ++i;
             }
         }
