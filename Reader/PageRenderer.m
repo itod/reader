@@ -13,7 +13,7 @@
 #define MIN_FONT_SIZE 16.0
 #define IMG_MARGIN 10.0
 #define TOLERANCE 10.0
-#define PHRASE_MARGIN 80.0
+#define PHRASE_MARGIN 100.0
 
 static NSMutableDictionary *sAttrs = nil;
 
@@ -42,35 +42,6 @@ static NSMutableDictionary *sAttrs = nil;
 
 #pragma mark -
 #pragma mark Public
-
-static void TDFontSizeBinarySearch(NSString *txt, CGFloat availWidth, double hi, double lo, NSInteger count) {
-    //NSLog(@"%@", @(++count));
-    double mid = round(lo + (hi-lo)*0.5);
-    BOOL bail = NO;
-    
-    if (mid <= MIN_FONT_SIZE+1.0) {
-        bail = YES;
-        mid = MIN_FONT_SIZE;
-    }
-    
-    NSFont *font = [NSFont systemFontOfSize:mid];
-    sAttrs[NSFontAttributeName] = font;
-    
-    NSAttributedString *str = [[[NSAttributedString alloc] initWithString:txt attributes:sAttrs] autorelease];
-    CGSize size = [str size];
-    
-    CGFloat diff = size.width - availWidth;
-    
-    if (bail || fabs(diff) <= TOLERANCE) {
-        return;
-    } else if (diff > TOLERANCE) {
-        return TDFontSizeBinarySearch(txt, availWidth, mid, lo, count);
-    } else {
-        TDCAssert(diff < 0.0 && fabs(diff) > TOLERANCE);
-        return TDFontSizeBinarySearch(txt, availWidth, hi, mid, count);
-    }
-}
-
 
 static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi, double lo, NSInteger count) {
     //NSLog(@"%@", @(++count));
@@ -105,25 +76,22 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
     TDAssertMainThread();
     
     NSUInteger phraseCount = [page.phrases count];
-    CGFloat totalPhraseMargin = ((phraseCount-1) * PHRASE_MARGIN);
-    CGFloat availWidth = round(CGRectGetWidth(bounds));
     CGRect textRect = CGRectZero;
-
-    NSString *txt = [page phraseText];
-    TDFontSizeBinarySearch(txt, availWidth-(IMG_MARGIN*4.0 + totalPhraseMargin), 200.0, MIN_FONT_SIZE, 0);
     
-    // Text
+    // Calculate total text rect
     {
+        CGFloat totalPhraseMargin = ((phraseCount-1) * PHRASE_MARGIN);
+        CGFloat availWidth = round(CGRectGetWidth(bounds));
+        NSString *txt = [page phraseText];
         NSAttributedString *str = TDStringBinarySearch(txt, availWidth-(IMG_MARGIN*4.0 + totalPhraseMargin), 200.0, MIN_FONT_SIZE, 0);
         CGSize size = [str size];
         CGFloat strWidth = size.width + totalPhraseMargin;
         textRect = CGRectMake(round(CGRectGetMidX(bounds)-strWidth*0.5), round(CGRectGetHeight(bounds)*0.75-size.height), round(strWidth), round(size.height));
-        //[str drawInRect:textRect];
         //CGContextStrokeRect(ctx, textRect);
 
     }
     
-    // Calculate
+    // Calculate phrase and img rects
     {
         CGRect phraseRects[phraseCount];
         CGRect imgRects[phraseCount];
@@ -134,9 +102,6 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
             CGFloat y = CGRectGetMinY(textRect);
             CGFloat maxExtent = y - CGRectGetMinY(bounds);
             
-//            NSAttributedString *wsStr = [[[NSAttributedString alloc] initWithString:@" " attributes:sAttrs] autorelease];
-//            CGFloat wsWidth = [wsStr size].width;
-
             NSUInteger i = 0;
             for (Phrase *phrase in page.phrases) {
                 NSAttributedString *subStr = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
@@ -151,7 +116,6 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
                 CGRect imgRect = CGRectInset(CGRectMake(x, y-extent, extent, extent), IMG_MARGIN, IMG_MARGIN);
                 imgRects[i] = imgRect;
                 
-                //x += size.width + wsWidth + PHRASE_MARGIN;
                 x += size.width + PHRASE_MARGIN;
                 
                 minImgExtent = MIN(minImgExtent, extent);
@@ -164,12 +128,13 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
             NSUInteger i = 0;
             for (Phrase *phrase in page.phrases) {
                 CGRect phraseRect = phraseRects[i];
-                CGContextStrokeRect(ctx, phraseRect);
                 CGRect imgRect = imgRects[i];
                 
                 imgRect = CGRectMake(round(CGRectGetMidX(phraseRect)-minImgExtent*0.5), CGRectGetMaxY(imgRect)-minImgExtent, minImgExtent, minImgExtent);
                 imgRects[i] = imgRect;
-                CGContextStrokeRect(ctx, imgRect);
+
+                //CGContextStrokeRect(ctx, phraseRect);
+                //CGContextStrokeRect(ctx, imgRect);
                 
                 NSString *imgName = phrase.imageName;
                 NSImage *img = [NSImage imageNamed:imgName];
