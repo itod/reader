@@ -1,1 +1,1 @@
-(Cinderella)[cinderella] (loves)[love] (the Prince.)[prince_charming];
+(Cinderella)[cinderella] (loves)[love] (the Prince)[prince_charming] (and scrubs)[scrub_brush] (the floor.)[floor];

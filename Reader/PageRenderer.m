@@ -12,7 +12,7 @@
 #import "Phrase.h"
 
 #define MIN_FONT_SIZE 16.0
-#define RUN_MARGIN_Y 20.0
+#define RUN_MARGIN_Y 0.0
 #define IMG_MARGIN 10.0
 #define TOLERANCE 10.0
 #define PHRASE_MARGIN_RATIO 0.1
@@ -115,7 +115,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
     for (Run *run in runs) {
 
         CGRect r = CGRectMake(CGRectGetMinX(bounds), y, CGRectGetWidth(bounds), runHeight);
-        [self renderRun:run inContext:ctx rect:r ];
+        [self renderRun:run inContext:ctx rect:r];
         
         y += runHeight + RUN_MARGIN_Y;
     }
@@ -167,7 +167,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
                 
                 CGRect imgRect = CGRectInset(CGRectMake(x, y-extent+imgFudge, extent, extent), IMG_MARGIN, IMG_MARGIN);
                 imgRects[i] = imgRect;
-                
+
                 x += size.width + phraseMargin;
                 
                 minImgExtent = MIN(minImgExtent, extent);
@@ -184,6 +184,13 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
                 
                 imgRect = CGRectMake(round(CGRectGetMidX(phraseRect)-minImgExtent*0.5), CGRectGetMaxY(imgRect)-minImgExtent, minImgExtent, minImgExtent);
                 imgRects[i] = imgRect;
+                
+                {
+                    CGFloat totalHeight = CGRectGetHeight(imgRect) + CGRectGetHeight(phraseRect);
+                    CGFloat midY = CGRectGetMidY(r);
+                    imgRect.origin.y = midY - totalHeight*0.5;
+                    phraseRect.origin.y = midY + totalHeight*0.5 - phraseRect.size.height;
+                }
 
                 //CGContextStrokeRect(ctx, phraseRect);
                 //CGContextStrokeRect(ctx, imgRect);

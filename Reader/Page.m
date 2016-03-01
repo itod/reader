@@ -73,26 +73,31 @@
 - (NSArray *)makeRuns {
     NSMutableArray *runs = nil;
 
-    NSUInteger phraseCount = [_phrases count];
+    double phraseCount = [_phrases count];
     if (phraseCount > 0) {
-        NSUInteger runCount = ceil(phraseCount * 0.5);
-        runs = [NSMutableArray arrayWithCapacity:runCount];
         
+        double phrasesPerRun = 4.0;
+        double runCount = ceil(phraseCount / phrasesPerRun);
+        NSLog(@"%@/%@ = %@", @(phraseCount), @(phrasesPerRun), @(runCount));
+        runs = [NSMutableArray arrayWithCapacity:runCount];
+
         Run *run = nil;
         for (Phrase *phrase in _phrases) {
             if (run) {
                 [run.phrases addObject:phrase];
-                TDAssert(2 == [run.phrases count]);
-                run = nil;
+                if (phrasesPerRun == [run.phrases count]) {
+                    TDAssert([run.phrases count] <= phrasesPerRun);
+                    run = nil;
+                }
             } else {
                 run = [[[Run alloc] init] autorelease];
                 [runs addObject:run];
 
-                run.phrases = [NSMutableArray arrayWithCapacity:2];
+                run.phrases = [NSMutableArray arrayWithCapacity:phrasesPerRun];
                 [run.phrases addObject:phrase];
             }
         }
-        TDAssert(runCount == [runs count]);
+        //TDAssert(runCount == [runs count]);
     }
     
     return runs;
