@@ -95,6 +95,14 @@
             case 8:
                 phrasesPerRun = 4;
                 break;
+            case 9:
+            case 10:
+                phrasesPerRun = 5;
+                break;
+            case 11:
+            case 12:
+                phrasesPerRun = 4;
+                break;
             default:
                 phrasesPerRun = 5;
                 break;
