@@ -79,4 +79,13 @@
     return str;
 }
 
+
+- (NSArray *)makeRuns {
+    NSMutableArray *runs = [NSMutableArray arrayWithCapacity:3];
+    
+    
+    
+    return runs;
+}
+
 @end
