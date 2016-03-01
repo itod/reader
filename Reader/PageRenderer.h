@@ -17,7 +17,7 @@
 
 @interface PageRenderer : NSObject
 
-- (void)render:(Page *)page inContext:(CGContextRef)ctx bounds:(CGRect)bounds;
+- (void)renderPage:(Page *)page inContext:(CGContextRef)ctx rect:(CGRect)bounds;
 
 @property (nonatomic, assign) IBOutlet id <PageRendererDelegate>delegate;
 @end

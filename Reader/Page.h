@@ -10,7 +10,6 @@
 
 @interface Page : NSObject <NSCopying, Serializable>
 
-- (NSMutableString *)phraseText;
 - (NSArray *)makeRuns;
 
 @property (nonatomic, copy) NSArray *phrases;

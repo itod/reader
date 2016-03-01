@@ -30,7 +30,7 @@
     CGContextRef ctx = [[NSGraphicsContext currentContext] graphicsPort];
     
     TDAssert(_pageRenderer);
-    [_pageRenderer render:_page inContext:ctx bounds:[self bounds]];
+    [_pageRenderer renderPage:_page inContext:ctx rect:[self bounds]];
 }
 
 @end

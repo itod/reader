@@ -8,9 +8,11 @@
 
 #import "PageRenderer.h"
 #import "Page.h"
+#import "Run.h"
 #import "Phrase.h"
 
 #define MIN_FONT_SIZE 16.0
+#define RUN_MARGIN_Y 20.0
 #define IMG_MARGIN 10.0
 #define TOLERANCE 10.0
 #define PHRASE_MARGIN_RATIO 0.1
@@ -43,12 +45,15 @@ static NSMutableDictionary *sAttrs = nil;
 #pragma mark -
 #pragma mark Public
 
-static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi, double lo, NSInteger count) {
+static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi, double lo, NSInteger count) {
     //NSLog(@"%@", @(++count));
     double mid = round(lo + (hi-lo)*0.5);
     BOOL bail = NO;
     
-    if (mid <= MIN_FONT_SIZE+1.0) {
+    if (fabs(hi - lo) < 2.0) {
+        bail = YES;
+        mid = lo;
+    } else if (mid <= MIN_FONT_SIZE+1.0) {
         bail = YES;
         mid = MIN_FONT_SIZE;
     }
@@ -62,7 +67,7 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
     CGFloat diff = size.width - availWidth;
     
     if (bail || fabs(diff) <= TOLERANCE) {
-        return str;
+        return mid;
     } else if (diff > TOLERANCE) {
         return TDStringBinarySearch(txt, availWidth, mid, lo, count);
     } else {
@@ -72,11 +77,55 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
 }
 
 
-- (void)render:(Page *)page inContext:(CGContextRef)ctx bounds:(CGRect)bounds {
+- (void)renderPage:(Page *)page inContext:(CGContextRef)ctx rect:(CGRect)bounds {
     TDAssertMainThread();
     
-    NSUInteger phraseCount = [page.phrases count];
-    CGFloat availWidth = round(CGRectGetWidth(bounds));
+    NSArray *runs = [page makeRuns];
+    NSUInteger runCount = [runs count];
+
+    CGFloat availHeight = CGRectGetHeight(bounds) - RUN_MARGIN_Y*(runCount-1);
+    CGFloat runHeight = availHeight / runCount;
+    CGFloat y = CGRectGetMinY(bounds);
+    
+    // get font size
+    {
+        CGFloat fontSize = MAXFLOAT;
+        for (Run *run in runs) {
+            CGRect r = CGRectMake(CGRectGetMinX(bounds), y, CGRectGetWidth(bounds), runHeight);
+            
+            NSUInteger phraseCount = [run.phrases count];
+            CGFloat availWidth = round(CGRectGetWidth(r));
+            CGFloat phraseMargin = availWidth * PHRASE_MARGIN_RATIO;
+            
+            // Calculate total text rect
+            {
+                CGFloat totalPhraseMargin = ((phraseCount-1) * phraseMargin);
+                
+                NSString *txt = [run phraseText];
+                CGFloat currFontSize = TDStringBinarySearch(txt, availWidth-(IMG_MARGIN*4.0 + totalPhraseMargin), 200.0, MIN_FONT_SIZE, 0);
+                fontSize = MIN(fontSize, currFontSize);
+            }
+        }
+        
+        NSFont *font = [NSFont systemFontOfSize:fontSize];
+        sAttrs[NSFontAttributeName] = font;
+    }
+
+    // render runs
+    for (Run *run in runs) {
+
+        CGRect r = CGRectMake(CGRectGetMinX(bounds), y, CGRectGetWidth(bounds), runHeight);
+        [self renderRun:run inContext:ctx rect:r ];
+        
+        y += runHeight + RUN_MARGIN_Y;
+    }
+}
+
+
+
+- (void)renderRun:(Run *)run inContext:(CGContextRef)ctx rect:(CGRect)r {
+    NSUInteger phraseCount = [run.phrases count];
+    CGFloat availWidth = round(CGRectGetWidth(r));
     CGFloat phraseMargin = availWidth * PHRASE_MARGIN_RATIO;
     CGRect textRect = CGRectZero;
     
@@ -84,11 +133,11 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
     {
         CGFloat totalPhraseMargin = ((phraseCount-1) * phraseMargin);
 
-        NSString *txt = [page phraseText];
-        NSAttributedString *str = TDStringBinarySearch(txt, availWidth-(IMG_MARGIN*4.0 + totalPhraseMargin), 200.0, MIN_FONT_SIZE, 0);
+        NSString *txt = [run phraseText];
+        NSAttributedString *str = [[[NSAttributedString alloc] initWithString:txt attributes:sAttrs] autorelease];
         CGSize size = [str size];
         CGFloat strWidth = size.width + totalPhraseMargin;
-        textRect = CGRectMake(round(CGRectGetMidX(bounds)-strWidth*0.5), round(CGRectGetHeight(bounds)*0.75-size.height), round(strWidth), round(size.height));
+        textRect = CGRectMake(round(CGRectGetMidX(r)-strWidth*0.5), round(CGRectGetMinY(r)+CGRectGetHeight(r)-size.height), round(strWidth), round(size.height));
         //CGContextStrokeRect(ctx, textRect);
 
     }
@@ -102,10 +151,11 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
         {
             CGFloat x = CGRectGetMinX(textRect);
             CGFloat y = CGRectGetMinY(textRect);
-            CGFloat maxExtent = y - CGRectGetMinY(bounds);
+            CGFloat maxExtent = y - CGRectGetMinY(r);
+            CGFloat imgFudge = CGRectGetHeight(textRect)*0.2;
             
             NSUInteger i = 0;
-            for (Phrase *phrase in page.phrases) {
+            for (Phrase *phrase in run.phrases) {
                 NSAttributedString *subStr = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
                 CGSize size = [subStr size];
                 
@@ -115,7 +165,7 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
                 
                 CGFloat extent = round(MIN(size.width, maxExtent));
                 
-                CGRect imgRect = CGRectInset(CGRectMake(x, y-extent, extent, extent), IMG_MARGIN, IMG_MARGIN);
+                CGRect imgRect = CGRectInset(CGRectMake(x, y-extent+imgFudge, extent, extent), IMG_MARGIN, IMG_MARGIN);
                 imgRects[i] = imgRect;
                 
                 x += size.width + phraseMargin;
@@ -128,7 +178,7 @@ static NSAttributedString *TDStringBinarySearch(NSString *txt, CGFloat availWidt
         // Draw
         {
             NSUInteger i = 0;
-            for (Phrase *phrase in page.phrases) {
+            for (Phrase *phrase in run.phrases) {
                 CGRect phraseRect = phraseRects[i];
                 CGRect imgRect = imgRects[i];
                 

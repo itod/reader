@@ -12,5 +12,5 @@
 
 - (NSMutableString *)phraseText;
 
-@property (nonatomic, copy) NSArray *phrases;
+@property (nonatomic, retain) NSMutableArray *phrases;
 @end

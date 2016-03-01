@@ -70,17 +70,6 @@
 #pragma mark -
 #pragma mark Public
 
-- (NSMutableString *)phraseText {
-    NSMutableString *str = [NSMutableString string];
-    
-    for (Phrase *phrase in _phrases) {
-        [str appendFormat:@"%@ ", phrase.text];
-    }
-    
-    return str;
-}
-
-
 - (NSArray *)makeRuns {
     NSMutableArray *runs = nil;
 
@@ -90,18 +79,17 @@
         runs = [NSMutableArray arrayWithCapacity:runCount];
         
         Run *run = nil;
-        NSMutableArray *phrases = nil;
         for (Phrase *phrase in _phrases) {
             if (run) {
-                [phrases addObject:phrase];
-                TDAssert(2 == [phrases count]);
-                run.phrases = phrases;
+                [run.phrases addObject:phrase];
+                TDAssert(2 == [run.phrases count]);
+                run = nil;
             } else {
                 run = [[[Run alloc] init] autorelease];
                 [runs addObject:run];
 
-                phrases = [NSMutableArray arrayWithCapacity:2];
-                [phrases addObject:phrase];
+                run.phrases = [NSMutableArray arrayWithCapacity:2];
+                [run.phrases addObject:phrase];
             }
         }
         TDAssert(runCount == [runs count]);
