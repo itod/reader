@@ -1,1 +1,1 @@
-(Cinderella)[cinderella] (loves)[love] (Prince Charming.)[prince_charming];
+(Cinderella)[cinderella] (loves)[love] (the Prince.)[prince_charming];
