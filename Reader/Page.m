@@ -73,12 +73,35 @@
 - (NSArray *)makeRuns {
     NSMutableArray *runs = nil;
 
-    double phraseCount = [_phrases count];
+    NSInteger phraseCount = [_phrases count];
     if (phraseCount > 0) {
         
-        double phrasesPerRun = 4.0;
-        double runCount = ceil(phraseCount / phrasesPerRun);
-        NSLog(@"%@/%@ = %@", @(phraseCount), @(phrasesPerRun), @(runCount));
+        NSInteger phrasesPerRun = 4;
+        switch (phraseCount) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                phrasesPerRun = phraseCount;
+                break;
+            case 4:
+                phrasesPerRun = 2;
+                break;
+            case 5:
+            case 6:
+                phrasesPerRun = 3;
+                break;
+            case 7:
+            case 8:
+                phrasesPerRun = 4;
+                break;
+            default:
+                phrasesPerRun = 5;
+                break;
+        }
+        
+        NSInteger runCount = ceil((double)phraseCount / (double)phrasesPerRun);
+        //NSLog(@"%@/%@ = %@", @(phraseCount), @(phrasesPerRun), @(runCount));
         runs = [NSMutableArray arrayWithCapacity:runCount];
 
         Run *run = nil;
