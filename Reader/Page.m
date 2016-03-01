@@ -7,6 +7,7 @@
 //
 
 #import "Page.h"
+#import "Run.h"
 #import "Phrase.h"
 
 @implementation Page
@@ -81,9 +82,30 @@
 
 
 - (NSArray *)makeRuns {
-    NSMutableArray *runs = [NSMutableArray arrayWithCapacity:3];
-    
-    
+    NSMutableArray *runs = nil;
+
+    NSUInteger phraseCount = [_phrases count];
+    if (phraseCount > 0) {
+        NSUInteger runCount = ceil(phraseCount * 0.5);
+        runs = [NSMutableArray arrayWithCapacity:runCount];
+        
+        Run *run = nil;
+        NSMutableArray *phrases = nil;
+        for (Phrase *phrase in _phrases) {
+            if (run) {
+                [phrases addObject:phrase];
+                TDAssert(2 == [phrases count]);
+                run.phrases = phrases;
+            } else {
+                run = [[[Run alloc] init] autorelease];
+                [runs addObject:run];
+
+                phrases = [NSMutableArray arrayWithCapacity:2];
+                [phrases addObject:phrase];
+            }
+        }
+        TDAssert(runCount == [runs count]);
+    }
     
     return runs;
 }
