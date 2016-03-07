@@ -1,1 +1,1 @@
-(Cinderella)[cinderella] (loves)[love] (the Prince)[prince_charming] (and scrubs)[scrub_brush] (the floor.)[floor] (and scrubs)[scrub_brush] (the floor.)[floor] (and scrubs)[scrub_brush] (the floor.)[floor] (and scrubs)[scrub_brush] (the floor.)[floor];
+(Gus)[gus] (loves)[love] (the bat.)[baseball_bat];
