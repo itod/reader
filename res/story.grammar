@@ -11,7 +11,9 @@
 }
 
 story = line+;
-line = (phraseSpec imageSpec)+ ';'!;
+line = (phraseSpec imageSpec) semi;
 
 phraseSpec = %{'(', ')'};
 imageSpec = %{'[', ']'};
+
+semi = ';'!

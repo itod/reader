@@ -1,1 +1,1 @@
-(Gus)[gus] (loves)[love] (the bat.)[baseball_bat];
+(Gus)[gus] (loves)[love] (night time.)[night];
