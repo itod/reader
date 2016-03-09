@@ -11,9 +11,12 @@
 }
 
 story = line+;
-line = (phraseSpec imageSpec) semi;
+line = (phrase | decoratedPhrase)+ terminator;
 
+phrase = ~terminator;
+
+decoratedPhrase = phraseSpec imageSpec;
 phraseSpec = %{'(', ')'};
 imageSpec = %{'[', ']'};
 
-semi = ';'!
+terminator = '.';
