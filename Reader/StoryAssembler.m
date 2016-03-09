@@ -66,6 +66,28 @@
 }
 
 
+- (void)parser:(PKParser *)p didMatchTerminator:(PKAssembly *)a {
+    PKToken *tok = [a pop];
+    TDAssert([tok.stringValue isEqualToString:@";"]);
+    
+    Phrase *phrase = [[[Phrase alloc] init] autorelease];
+    phrase.text = tok.stringValue;
+    
+    //[a push:phrase];
+}
+
+
+- (void)parser:(PKParser *)p didMatchText:(PKAssembly *)a {
+    PKToken *tok = [a pop];
+    TDAssert(![tok.stringValue isEqualToString:@";"]);
+    
+    Phrase *phrase = [[[Phrase alloc] init] autorelease];
+    phrase.text = tok.stringValue;
+    
+    [a push:phrase];
+}
+
+
 - (void)parser:(PKParser *)p didMatchPhraseSpec:(PKAssembly *)a {
     PKToken *tok = [a pop];
     TDAssert(tok.isDelimitedString);

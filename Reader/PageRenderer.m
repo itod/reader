@@ -196,12 +196,14 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
                 //CGContextStrokeRect(ctx, imgRect);
                 
                 NSString *imgName = phrase.imageName;
-                NSImage *img = [NSImage imageNamed:imgName];
-                
-                if (img) {
-                    [img drawInRect:imgRect];
-                } else {
-                    NSLog(@"could not find image named: %@", imgName);
+                if (imgName) {
+                    NSImage *img = [NSImage imageNamed:imgName];
+                    
+                    if (img) {
+                        [img drawInRect:imgRect];
+                    } else {
+                        NSLog(@"could not find image named: %@", imgName);
+                    }
                 }
                 
                 NSAttributedString *str = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];

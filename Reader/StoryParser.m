@@ -13,13 +13,13 @@
     if (self) {
         
         self.startRuleName = @"story";
-        self.tokenKindTab[@";"] = @(STORYPARSER_TOKEN_KIND_SEMI_COLON);
         self.tokenKindTab[@"(,)"] = @(STORYPARSER_TOKEN_KIND_PHRASESPEC);
         self.tokenKindTab[@"[,]"] = @(STORYPARSER_TOKEN_KIND_IMAGESPEC);
+        self.tokenKindTab[@";"] = @(STORYPARSER_TOKEN_KIND_TERMINATOR);
 
-        self.tokenKindNameTab[STORYPARSER_TOKEN_KIND_SEMI_COLON] = @";";
         self.tokenKindNameTab[STORYPARSER_TOKEN_KIND_PHRASESPEC] = @"(,)";
         self.tokenKindNameTab[STORYPARSER_TOKEN_KIND_IMAGESPEC] = @"[,]";
+        self.tokenKindNameTab[STORYPARSER_TOKEN_KIND_TERMINATOR] = @";";
 
     }
     return self;
@@ -63,12 +63,36 @@
 - (void)line_ {
     
     do {
-        [self phraseSpec_]; 
-        [self imageSpec_]; 
-    } while ([self speculate:^{ [self phraseSpec_]; [self imageSpec_]; }]);
-    [self match:STORYPARSER_TOKEN_KIND_SEMI_COLON discard:YES]; 
+        if ([self predicts:STORYPARSER_TOKEN_KIND_PHRASESPEC, 0]) {
+            [self decoratedPhrase_];
+        } else if (![self predicts:STORYPARSER_TOKEN_KIND_TERMINATOR, 0]) {
+            [self text_]; 
+        } else {
+            [self raise:@"No viable alternative found in rule 'line'."];
+        }
+    } while (![self predicts:STORYPARSER_TOKEN_KIND_TERMINATOR, 0]);
+    [self terminator_]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchLine:)];
+}
+
+- (void)text_ {
+    
+    if (![self predicts:STORYPARSER_TOKEN_KIND_TERMINATOR, 0]) {
+        [self match:TOKEN_KIND_BUILTIN_ANY discard:NO];
+    } else {
+        [self raise:@"negation test failed in text"];
+    }
+
+    [self fireDelegateSelector:@selector(parser:didMatchText:)];
+}
+
+- (void)decoratedPhrase_ {
+    
+    [self phraseSpec_]; 
+    [self imageSpec_]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchDecoratedPhrase:)];
 }
 
 - (void)phraseSpec_ {
@@ -83,6 +107,13 @@
     [self match:STORYPARSER_TOKEN_KIND_IMAGESPEC discard:NO]; 
 
     [self fireDelegateSelector:@selector(parser:didMatchImageSpec:)];
+}
+
+- (void)terminator_ {
+    
+    [self match:STORYPARSER_TOKEN_KIND_TERMINATOR discard:NO]; 
+
+    [self fireDelegateSelector:@selector(parser:didMatchTerminator:)];
 }
 
 @end
