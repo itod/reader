@@ -1,1 +1,1 @@
-(Gus)[gus] (loves)[love] the (night.)[night];
+(Gus)[gus] (loves)[love] the (night)[night] (time.)[clock];
