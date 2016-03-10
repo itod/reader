@@ -12,7 +12,7 @@
 #import "Phrase.h"
 
 #define MIN_FONT_SIZE 16.0
-#define RUN_MARGIN_Y 0.0
+#define RUN_MARGIN_Y_RATIO 0.33
 #define IMG_MARGIN 10.0
 #define TOLERANCE 10.0
 #define PHRASE_MARGIN_RATIO 0.1
@@ -83,8 +83,9 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
     NSArray *runs = [page makeRuns];
     NSUInteger runCount = [runs count];
 
-    CGFloat availHeight = CGRectGetHeight(bounds) - RUN_MARGIN_Y*(runCount-1);
-    CGFloat runHeight = availHeight / runCount;
+    CGFloat runHeight = CGRectGetHeight(bounds) / runCount;
+    CGFloat availHeight = CGRectGetHeight(bounds) - (RUN_MARGIN_Y_RATIO*runHeight)*(runCount-1);
+    runHeight = availHeight / runCount;
     CGFloat y = CGRectGetMinY(bounds);
     
     // get font size
@@ -117,7 +118,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
         CGRect r = CGRectMake(CGRectGetMinX(bounds), y, CGRectGetWidth(bounds), runHeight);
         [self renderRun:run inContext:ctx rect:r];
         
-        y += runHeight + RUN_MARGIN_Y;
+        y += runHeight + RUN_MARGIN_Y_RATIO*runHeight;
     }
 }
 
