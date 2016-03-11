@@ -48,11 +48,22 @@
 
     self.stories = @[
                      [parser parseString:@"(Chip)[chip] is (happy.)[happy];" error:nil],
-                     [parser parseString:@"(Mrs. Potts)[mrspotts] (loves)[heart] (Chip)[chip] to the (moon)[moon] (and)[and] (back.)[back];" error:nil],
+                     [parser parseString:@"(Aurora)[aurora] is (sad.)[sad];" error:nil],
+                     [parser parseString:@"(Gus)[gus] is (happy.)[happy];" error:nil],
+                     [parser parseString:@"(Mrs. Potts)[mrspotts] is (sad.)[sad];" error:nil],
+
                      [parser parseString:@"(Cinderella)[cinderella] (loves)[heart] the (Prince.)[prince];" error:nil],
-//                     [parser parseString:@";" error:nil],
-//                     [parser parseString:@";" error:nil],
-//                     [parser parseString:@";" error:nil],
+
+                     [parser parseString:@"(Cogsworth)[cogsworth] (loves)[heart] (Football.)[football];" error:nil],
+                     [parser parseString:@"(Gus)[gus] (loves)[heart] (Basketball.)[basketball];" error:nil],
+                     
+                     [parser parseString:@"(Belle)[belle] (loves)[heart] the (night)[night] (time.)[clock];" error:nil],
+                     [parser parseString:@"(Mrs. Potts)[mrspotts] (loves)[heart] the (day)[day] (time.)[clock];" error:nil],
+                     
+                     [parser parseString:@"(Mrs. Potts)[mrspotts] (loves)[heart] (Chip)[chip] to the (moon)[moon] (and)[and] (back.)[back];" error:nil],
+                     [parser parseString:@"(Gus)[gus] (loves)[heart] the (day)[day] (time)[clock] (and)[and] the (night)[night] (time.)[time];" error:nil],
+                     [parser parseString:@"(Belle)[gus] (loves)[heart] the (Sun)[sun] (and)[and] the (Moon)[moon];" error:nil],
+
 //                     [parser parseString:@";" error:nil],
 //                     [parser parseString:@";" error:nil],
                      ];
