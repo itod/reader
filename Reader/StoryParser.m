@@ -54,6 +54,7 @@
 }
 
 - (void)story_ {
+    [self fireDelegateSelector:@selector(parser:willMatchStory:)];
     
     do {
         [self line_]; 

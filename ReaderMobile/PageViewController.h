@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PageViewController.h
 //  ReaderMobile
 //
 //  Created by Todd Ditchendorf on 3/11/16.
@@ -11,12 +11,14 @@
 @class  Story;
 @class  PageView;
 
-@interface ViewController : UIViewController
+@interface PageViewController : UIViewController
 
 - (IBAction)prevPage:(id)sender;
 - (IBAction)nextPage:(id)sender;
 
-@property (nonatomic, retain, readonly) PageView *pageView;
+- (IBAction)back:(id)sender;
+
+@property (nonatomic, retain) IBOutlet PageView *pageView;
 @property (nonatomic, retain) Story *story;
 @end
 

@@ -101,4 +101,19 @@
 }
 
 
+- (void)reset {
+    self.pageIndex = -1;
+}
+
+
+- (NSMutableString *)text {
+    NSMutableString *str = [NSMutableString string];
+    
+    for (Page *page in _pages) {
+        [str appendFormat:@"%@\n", page.text];
+    }
+    
+    return str;
+}
+
 @end

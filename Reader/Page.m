@@ -70,6 +70,17 @@
 #pragma mark -
 #pragma mark Public
 
+- (NSMutableString *)text {
+    NSMutableString *str = [NSMutableString string];
+    
+    for (Phrase *phrase in _phrases) {
+        [str appendFormat:@"%@ ", phrase.text];
+    }
+    
+    return str;
+}
+
+
 - (NSArray *)makeRuns {
     NSMutableArray *runs = nil;
 

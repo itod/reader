@@ -26,7 +26,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.pages = [NSMutableArray array];
         
         self.openCurly = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"{" doubleValue:0.0];
         self.openSquare = [PKToken tokenWithTokenType:PKTokenTypeSymbol stringValue:@"[" doubleValue:0.0];
@@ -45,6 +44,11 @@
 
 #pragma mark -
 #pragma mark StoryParserDelegate
+
+- (void)parser:(PKParser *)p willMatchStory:(PKAssembly *)a {
+    self.pages = [NSMutableArray array];
+}
+
 
 - (void)parser:(PKParser *)p didMatchStory:(PKAssembly *)a {
     Story *story = [[[Story alloc] init] autorelease];

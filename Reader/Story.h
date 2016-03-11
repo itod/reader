@@ -14,6 +14,9 @@
 
 - (Page *)currentPage;
 - (void)advance:(NSInteger)pages;
+- (void)reset;
+
+- (NSMutableString *)text;
 
 @property (nonatomic, copy) NSArray *pages;
 @property (nonatomic, assign, readonly) NSInteger pageIndex;
