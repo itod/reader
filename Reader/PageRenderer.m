@@ -24,12 +24,12 @@ static NSMutableDictionary *sAttrs = nil;
 + (void)initialize {
     if ([PageRenderer class] == self) {
         id paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
-        [paraStyle setAlignment:NSCenterTextAlignment];
+        [paraStyle setAlignment:NSTextAlignmentCenter];
         [paraStyle setLineBreakMode:NSLineBreakByClipping];
         
         sAttrs = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                  [NSFont systemFontOfSize:10.0], NSFontAttributeName,
-                  [NSColor blackColor], NSForegroundColorAttributeName,
+                  [FONT_CLASS systemFontOfSize:10.0], NSFontAttributeName,
+                  [COLOR_CLASS blackColor], NSForegroundColorAttributeName,
                   paraStyle, NSParagraphStyleAttributeName,
                   nil];
     }
@@ -58,7 +58,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
         mid = MIN_FONT_SIZE;
     }
     
-    NSFont *font = [NSFont systemFontOfSize:mid];
+    id font = [FONT_CLASS systemFontOfSize:mid];
     sAttrs[NSFontAttributeName] = font;
     
     NSAttributedString *str = [[[NSAttributedString alloc] initWithString:txt attributes:sAttrs] autorelease];
@@ -108,7 +108,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
             }
         }
         
-        NSFont *font = [NSFont systemFontOfSize:fontSize];
+        id font = [FONT_CLASS systemFontOfSize:fontSize];
         sAttrs[NSFontAttributeName] = font;
     }
 
@@ -200,7 +200,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
                 
                 NSString *imgName = phrase.imageName;
                 if (imgName) {
-                    NSImage *img = [NSImage imageNamed:imgName];
+                    id img = [IMAGE_CLASS imageNamed:imgName];
                     
                     if (img) {
                         [img drawInRect:imgRect];

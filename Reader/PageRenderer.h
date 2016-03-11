@@ -6,7 +6,12 @@
 //  Copyright © 2016 Todd Ditchendorf. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+#if MOBILE
+#import <UIKit/UIKit.h>
+#else
+#import <AppKit/AppKit.h>
+#endif
 
 @class Page;
 @class PageRenderer;
