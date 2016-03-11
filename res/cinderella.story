@@ -1,1 +1,1 @@
-(Mrs. Potts)[mrspotts] (loves)[love] (Chip)[chip] to the (moon)[moon] (and)[and] (back.)[back];
+(Chip)[chip] is (sad)[sad];
