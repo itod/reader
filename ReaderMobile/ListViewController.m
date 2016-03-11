@@ -31,6 +31,11 @@
 #pragma mark -
 #pragma mark UIViewController
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,6 +49,12 @@
     self.stories = @[
                      [parser parseString:@"(Chip)[chip] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Mrs. Potts)[mrspotts] (loves)[heart] (Chip)[chip] to the (moon)[moon] (and)[and] (back.)[back];" error:nil],
+                     [parser parseString:@"(Cinderella)[cinderella] (loves)[heart] the (Prince.)[prince];" error:nil],
+//                     [parser parseString:@";" error:nil],
+//                     [parser parseString:@";" error:nil],
+//                     [parser parseString:@";" error:nil],
+//                     [parser parseString:@";" error:nil],
+//                     [parser parseString:@";" error:nil],
                      ];
 }
 

@@ -26,6 +26,11 @@
 #pragma mark -
 #pragma mark UIViewController
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
  
