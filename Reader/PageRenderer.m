@@ -12,7 +12,7 @@
 #import "Phrase.h"
 
 #define MIN_FONT_SIZE 16.0
-#define RUN_MARGIN_Y_RATIO 0.33
+#define RUN_MARGIN_Y_RATIO 0.1
 #define IMG_MARGIN 10.0
 #define TOLERANCE 10.0
 #define PHRASE_MARGIN_RATIO 0.1
@@ -158,20 +158,22 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
             NSUInteger i = 0;
             for (Phrase *phrase in run.phrases) {
                 NSAttributedString *subStr = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
-                CGSize size = [subStr size];
+                CGSize strSize = [subStr size];
                 
                 // relative x-fudge needed here to offset apple's text drawing api
-                CGRect phraseRect = CGRectMake(x + size.width*0.05, y, size.width, size.height);
+                CGRect phraseRect = CGRectMake(x + strSize.width*0.05, y, strSize.width, strSize.height);
                 phraseRects[i] = phraseRect;
                 
-                CGFloat extent = round(MIN(size.width, maxExtent));
+                CGFloat extent = round(MIN(strSize.width, maxExtent));
                 
                 CGRect imgRect = CGRectInset(CGRectMake(x, y-extent+imgFudge, extent, extent), IMG_MARGIN, IMG_MARGIN);
                 imgRects[i] = imgRect;
 
-                x += size.width + phraseMargin;
+                x += strSize.width + phraseMargin;
                 
-                minImgExtent = MIN(minImgExtent, extent);
+                if (phrase.imageName) {
+                    minImgExtent = MIN(minImgExtent, extent);
+                }
                 ++i;
             }
         }

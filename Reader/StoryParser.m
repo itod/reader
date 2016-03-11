@@ -43,6 +43,8 @@
     [t.delimitState addStartMarker:@"[" endMarker:@"]" allowedCharacterSet:nil];
     [t setTokenizerState:t.delimitState from:'(' to:')'];
     [t setTokenizerState:t.delimitState from:'[' to:'['];
+        
+    [t.wordState setWordChars:YES from:'.' to:'.'];
 
     }];
 

@@ -1,1 +1,1 @@
-(Gus)[gus] (loves)[love] the (night)[night] (time.)[clock];
+(Mrs. Potts)[mrspotts] (loves)[love] (Chip)[chip] to the (moon)[moon] (and)[and] (back.)[back];
