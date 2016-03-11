@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class  Story;
+@class  PageView;
+
 @interface ViewController : UIViewController
 
+- (IBAction)prevPage:(id)sender;
+- (IBAction)nextPage:(id)sender;
 
+@property (nonatomic, retain, readonly) PageView *pageView;
+@property (nonatomic, retain) Story *story;
 @end
 

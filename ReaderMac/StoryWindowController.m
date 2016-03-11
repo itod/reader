@@ -64,9 +64,4 @@
     [_pageView setNeedsDisplay:YES];
 }
 
-
-#pragma mark -
-#pragma mark PageRendererDelegate
-
-
 @end
