@@ -716,6 +716,7 @@
 				D3DE5CAB1C936CBA008F3366 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

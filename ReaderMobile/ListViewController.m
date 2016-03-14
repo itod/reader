@@ -57,6 +57,7 @@
                      [parser parseString:@"(Cogsworth)[cogsworth] (loves)[heart] (Football.)[football];" error:nil],
                      [parser parseString:@"(Gus)[gus] (loves)[heart] (Basketball.)[basketball];" error:nil],
                      [parser parseString:@"The (prince)[prince] (loves)[heart] (Soccer.)[soccerball];" error:nil],
+                     [parser parseString:@"(Gaston)[gaston] (loves)[heart] (Tennis.)[racquet];" error:nil],
                      
                      [parser parseString:@"(Belle)[belle] (loves)[heart] the (night)[night] (time.)[clock];" error:nil],
                      [parser parseString:@"(Mrs. Potts)[mrspotts] (loves)[heart] the (day)[day] (time.)[clock];" error:nil],
