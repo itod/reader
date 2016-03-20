@@ -47,6 +47,13 @@
     StoryParser *parser = [[[StoryParser alloc] initWithDelegate:ass] autorelease];
 
     self.stories = @[
+                     [parser parseString:@"(der Fußball)[soccerball];" error:nil],
+                     [parser parseString:@"(das Feld)[soccer_field];" error:nil],
+                     [parser parseString:@"(das Tor)[soccer_goal];" error:nil],
+                     [parser parseString:@"(der Spieler)[soccer_boy];" error:nil],
+                     [parser parseString:@"(die Spielerin)[soccer_girl];" error:nil],
+                     
+                     
                      [parser parseString:@"(Chip)[chip] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Aurora)[aurora] is (sad.)[sad];" error:nil],
                      [parser parseString:@"(Gus)[gus] is (happy.)[happy];" error:nil],
