@@ -93,11 +93,12 @@
             case 1:
             case 2:
             case 3:
+            case 4:
                 phrasesPerRun = phraseCount;
                 break;
-            case 4:
-                phrasesPerRun = 2;
-                break;
+//            case 4:
+//                phrasesPerRun = 2;
+//                break;
             case 5:
             case 6:
                 phrasesPerRun = 3;

@@ -47,17 +47,42 @@
     StoryParser *parser = [[[StoryParser alloc] initWithDelegate:ass] autorelease];
 
     self.stories = @[
+                     [parser parseString:@"(die Hand)[hand];" error:nil],
+                     [parser parseString:@"(das Knie)[knee];" error:nil],
+                     [parser parseString:@"(der Fuß)[foot];" error:nil],
+                     [parser parseString:@"(der Ball)[ball];" error:nil],
                      [parser parseString:@"(der Fußball)[soccerball];" error:nil],
                      [parser parseString:@"(das Feld)[soccer_field];" error:nil],
                      [parser parseString:@"(das Tor)[soccer_goal];" error:nil],
                      [parser parseString:@"(der Spieler)[soccer_boy];" error:nil],
                      [parser parseString:@"(die Spielerin)[soccer_girl];" error:nil],
                      
-                     
+                     [parser parseString:@"B is for (Belle)[belle];" error:nil],
+                     [parser parseString:@"L is for (Lumiere)[lumiere];" error:nil],
+                     [parser parseString:@"A is for (Aurora)[aurora];" error:nil],
+                     [parser parseString:@"G is for (Gus)[gus];" error:nil],
+                     [parser parseString:@"M is for (Mrs. Potts)[mrspotts];" error:nil],
+                     [parser parseString:@"G is for (Gaston)[gaston];" error:nil],
+                     [parser parseString:@"P is for (Prince Charming)[prince];" error:nil],
+                     [parser parseString:@"C is for (Cogsworth)[cogsworth];" error:nil],
+                     [parser parseString:@"M is for (Moon)[moon];" error:nil],
+                     [parser parseString:@"S is for (Sun)[sun];" error:nil],
+                     [parser parseString:@"T is for (Tennis)[racquet];" error:nil],
+                     [parser parseString:@"C is for (Clock)[clock];" error:nil],
+                     [parser parseString:@"B is for (Baseball)[baseball];" error:nil],
+                     [parser parseString:@"S is for (Soccer)[soccerball];" error:nil],
+                     [parser parseString:@"G is for (Goal)[soccer_goal];" error:nil],
+                     [parser parseString:@"C is for (Cloud)[cloud];" error:nil],
+                     [parser parseString:@"S is for (Star)[star];" error:nil],
+                     [parser parseString:@"B is for (Brush)[scrub_brush];" error:nil],
+
+                     [parser parseString:@"(Lumiere)[lumiere] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Chip)[chip] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Aurora)[aurora] is (sad.)[sad];" error:nil],
                      [parser parseString:@"(Gus)[gus] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Mrs. Potts)[mrspotts] is (sad.)[sad];" error:nil],
+
+                     [parser parseString:@"(Belle)[belle] (loves)[heart] the (Beast.)[beast];" error:nil],
 
                      [parser parseString:@"(Cinderella)[cinderella] (loves)[heart] the (Prince.)[prince];" error:nil],
 
