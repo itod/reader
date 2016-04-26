@@ -57,6 +57,7 @@
                      [parser parseString:@"(der Spieler)[soccer_boy];" error:nil],
                      [parser parseString:@"(die Spielerin)[soccer_girl];" error:nil],
                      
+                     [parser parseString:@"M is for (Maurice)[maurice];" error:nil],
                      [parser parseString:@"B is for (Belle)[belle];" error:nil],
                      [parser parseString:@"L is for (Lumiere)[lumiere];" error:nil],
                      [parser parseString:@"A is for (Aurora)[aurora];" error:nil],
@@ -76,12 +77,14 @@
                      [parser parseString:@"S is for (Star)[star];" error:nil],
                      [parser parseString:@"B is for (Brush)[scrub_brush];" error:nil],
 
+                     [parser parseString:@"(Maurice)[maurice] is (surprised.)[surprised];" error:nil],
                      [parser parseString:@"(Lumiere)[lumiere] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Chip)[chip] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Aurora)[aurora] is (sad.)[sad];" error:nil],
                      [parser parseString:@"(Gus)[gus] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Mrs. Potts)[mrspotts] is (sad.)[sad];" error:nil],
 
+                     [parser parseString:@"(Maurice)[maurice] (loves)[heart] (Belle.)[belle];" error:nil],
                      [parser parseString:@"(Belle)[belle] (loves)[heart] the (Beast.)[beast];" error:nil],
 
                      [parser parseString:@"(Cinderella)[cinderella] (loves)[heart] the (Prince.)[prince];" error:nil],
