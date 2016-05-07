@@ -66,6 +66,8 @@
                      [parser parseString:@"(Chip)[chip] (likes)[like] (Basketball)[basketball] (and)[and] (Soccer.)[soccerball];" error:nil],
                      [parser parseString:@"(Lumiere)[lumiere] (likes)[like] (Tennis)[racquet] (and)[and] (Football.)[football];" error:nil],
 
+                     [parser parseString:@"(Belle)[belle] (loves)[heart] (Music.)[music];" error:nil],
+
                      [parser parseString:@"H is for (Happy)[happy];" error:nil],
                      [parser parseString:@"S is for (Sad)[sad];" error:nil],
                      [parser parseString:@"L is for (Love)[heart];" error:nil],
