@@ -73,6 +73,8 @@
                      [parser parseString:@"L is for (Love)[heart];" error:nil],
                      [parser parseString:@"L is for (Like)[like];" error:nil],
 
+                     [parser parseString:@"E is for (Elsa)[elsa];" error:nil],
+                     [parser parseString:@"O is for (Olaf)[olaf];" error:nil],
                      [parser parseString:@"M is for (Maurice)[maurice];" error:nil],
                      [parser parseString:@"B is for (Belle)[belle];" error:nil],
                      [parser parseString:@"L is for (Lumiere)[lumiere];" error:nil],
@@ -99,7 +101,9 @@
                      [parser parseString:@"(Aurora)[aurora] is (sad.)[sad];" error:nil],
                      [parser parseString:@"(Gus)[gus] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Mrs. Potts)[mrspotts] is (sad.)[sad];" error:nil],
-
+                     [parser parseString:@"(Olaf)[olaf] is (happy.)[happy];" error:nil],
+                     [parser parseString:@"(Elsa)[elsa] (likes)[likes] (Olaf.)[olaf];" error:nil],
+                     
                      [parser parseString:@"(Maurice)[maurice] (loves)[heart] (Belle.)[belle];" error:nil],
                      [parser parseString:@"(Belle)[belle] (loves)[heart] the (Beast.)[beast];" error:nil],
 
