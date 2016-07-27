@@ -47,15 +47,30 @@
     StoryParser *parser = [[[StoryParser alloc] initWithDelegate:ass] autorelease];
 
     self.stories = @[
-//                     [parser parseString:@"(die Hand)[hand];" error:nil],
-//                     [parser parseString:@"(das Knie)[knee];" error:nil],
-//                     [parser parseString:@"(der Fuß)[foot];" error:nil],
-//                     [parser parseString:@"(der Ball)[ball];" error:nil],
-//                     [parser parseString:@"(der Fußball)[soccerball];" error:nil],
-//                     [parser parseString:@"(das Feld)[soccer_field];" error:nil],
-//                     [parser parseString:@"(das Tor)[soccer_goal];" error:nil],
-//                     [parser parseString:@"(der Spieler)[soccer_boy];" error:nil],
-//                     [parser parseString:@"(die Spielerin)[soccer_girl];" error:nil],
+                     [parser parseString:@"(das Auge)[eye];" error:nil],
+                     [parser parseString:@"(die Nase)[nose];" error:nil],
+                     [parser parseString:@"(die Hand)[hand];" error:nil],
+                     [parser parseString:@"(das Knie)[knee];" error:nil],
+                     [parser parseString:@"(der Knöchel)[ankle];" error:nil],
+                     [parser parseString:@"(der Fuß)[foot];" error:nil],
+                     [parser parseString:@"(der Ball)[ball];" error:nil],
+                     [parser parseString:@"(der Fußball)[soccerball];" error:nil],
+                     [parser parseString:@"(das Feld)[soccer_field];" error:nil],
+                     [parser parseString:@"(das Tor)[soccer_goal];" error:nil],
+                     [parser parseString:@"(der Spieler)[soccer_boy];" error:nil],
+                     [parser parseString:@"(die Spielerin)[soccer_girl];" error:nil],
+                     
+                     [parser parseString:@"E is for (Eye)[eye];" error:nil],
+                     [parser parseString:@"N is for (Nose)[nose];" error:nil],
+                     [parser parseString:@"A is for (Ankle)[ankle];" error:nil],
+                     [parser parseString:@"F is for (Foot)[foot];" error:nil],
+                     [parser parseString:@"B is for (Ball)[ball];" error:nil],
+                     [parser parseString:@"K is for (Knee)[knee];" error:nil],
+                     [parser parseString:@"(Soccer Ball)[soccerball];" error:nil],
+                     [parser parseString:@"(Soccer Field)[soccer_field];" error:nil],
+                     [parser parseString:@"(Soccer Goal)[soccer_goal];" error:nil],
+                     [parser parseString:@"(Boy Player)[soccer_boy];" error:nil],
+                     [parser parseString:@"(Girl Player)[soccer_girl];" error:nil],
                      
                      [parser parseString:@"(Cogsworth)[cogsworth] (likes)[like] (Lumiere.)[lumiere];" error:nil],
                      [parser parseString:@"(Belle)[belle] (likes)[like] (Aurora.)[aurora];" error:nil],
@@ -113,7 +128,7 @@
 
                      [parser parseString:@"(Cogsworth)[cogsworth] (loves)[heart] (Football.)[football];" error:nil],
                      [parser parseString:@"(Gus)[gus] (loves)[heart] (Basketball.)[basketball];" error:nil],
-                     [parser parseString:@"The (prince)[prince] (loves)[heart] (Soccer.)[soccerball];" error:nil],
+                     [parser parseString:@"The (Prince)[prince] (loves)[heart] (Soccer.)[soccerball];" error:nil],
                      [parser parseString:@"(Gaston)[gaston] (loves)[heart] (Tennis.)[racquet];" error:nil],
                      [parser parseString:@"(Gaston)[gaston] (loves)[heart] (Belle.)[belle];" error:nil],
                      [parser parseString:@"(Mrs. Potts)[mrspotts] (loves)[heart] (Chip.)[chip];" error:nil],
@@ -124,7 +139,7 @@
                      
                      [parser parseString:@"(Mrs. Potts)[mrspotts] (loves)[heart] (Chip)[chip] to the (moon)[moon] (and)[and] (back.)[back];" error:nil],
                      [parser parseString:@"(Gus)[gus] (loves)[heart] the (day)[day] (time)[clock] (and)[and] the (night)[night] (time.)[clock];" error:nil],
-                     [parser parseString:@"(Belle)[belle] (loves)[heart] the (Sun)[sun] (and)[and] the (Moon.)[moon];" error:nil],
+                     [parser parseString:@"(Belle)[belle] (loves)[heart] the (sun)[sun] (and)[and] the (moon.)[moon];" error:nil],
 
 //                     [parser parseString:@";" error:nil],
 //                     [parser parseString:@";" error:nil],
