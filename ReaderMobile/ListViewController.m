@@ -48,6 +48,7 @@
 
     self.stories = @[
                      [parser parseString:@"(das Auge)[eye];" error:nil],
+                     [parser parseString:@"(das Ohr)[ear];" error:nil],
                      [parser parseString:@"(die Nase)[nose];" error:nil],
                      [parser parseString:@"(die Hand)[hand];" error:nil],
                      [parser parseString:@"(das Knie)[knee];" error:nil],
@@ -62,6 +63,7 @@
                      
                      [parser parseString:@"E is for (Eye)[eye];" error:nil],
                      [parser parseString:@"N is for (Nose)[nose];" error:nil],
+                     [parser parseString:@"E is for (Ear)[ear];" error:nil],
                      [parser parseString:@"A is for (Ankle)[ankle];" error:nil],
                      [parser parseString:@"F is for (Foot)[foot];" error:nil],
                      [parser parseString:@"B is for (Ball)[ball];" error:nil],
