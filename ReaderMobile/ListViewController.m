@@ -120,7 +120,7 @@
                      [parser parseString:@"(Gus)[gus] is (happy.)[happy];" error:nil],
                      [parser parseString:@"(Mrs. Potts)[mrspotts] is (sad.)[sad];" error:nil],
                      [parser parseString:@"(Olaf)[olaf] is (happy.)[happy];" error:nil],
-                     [parser parseString:@"(Elsa)[elsa] (likes)[likes] (Olaf.)[olaf];" error:nil],
+                     [parser parseString:@"(Elsa)[elsa] (likes)[like] (Olaf.)[olaf];" error:nil],
                      [parser parseString:@"(Anna)[anna] (loves)[heart] (Elsa.)[elsa];" error:nil],
                      
                      [parser parseString:@"(Maurice)[maurice] (loves)[heart] (Belle.)[belle];" error:nil],
