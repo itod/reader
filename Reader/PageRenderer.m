@@ -116,6 +116,8 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
     for (Run *run in runs) {
 
         CGRect r = CGRectMake(CGRectGetMinX(bounds), y, CGRectGetWidth(bounds), runHeight);
+        //CGContextStrokeRect(ctx, r);
+        
         [self renderRun:run inContext:ctx rect:r];
         
         y += runHeight + RUN_MARGIN_Y_RATIO*runHeight;
