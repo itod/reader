@@ -61,6 +61,22 @@
 //                     [parser parseString:@"(der Spieler)[soccer_boy];" error:nil],
 //                     [parser parseString:@"(die Spielerin)[soccer_girl];" error:nil],
 
+                     [parser parseString:@"S is for (Sword)[sword];" error:nil],
+                     [parser parseString:@"F is for (Flag)[flag];" error:nil],
+                     [parser parseString:@"S is for (Shield)[shield];" error:nil],
+                     [parser parseString:@"A is for (Axe)[axe];" error:nil],
+
+                     [parser parseString:@"D is for (Dog)[dog];" error:nil],
+                     [parser parseString:@"C is for (Cat)[cat];" error:nil],
+                     [parser parseString:@"R is for (Rooster)[rooster];" error:nil],
+                     [parser parseString:@"H is for (Hen)[hen];" error:nil],
+                     [parser parseString:@"P is for (Penguin)[penguin];" error:nil],
+
+                     [parser parseString:@"C is for (Cake)[cake];" error:nil],
+                     [parser parseString:@"P is for (Pie)[cherry_pie];" error:nil],
+                     [parser parseString:@"S is for (Sandwich)[sandwich];" error:nil],
+
+
                      [parser parseString:@"P is for (Piano)[piano];" error:nil],
                      [parser parseString:@"X is for (Xylophone)[xylophone];" error:nil],
                      [parser parseString:@"G is for (Guitar)[guitar];" error:nil],
