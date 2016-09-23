@@ -205,6 +205,21 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
                     id img = [IMAGE_CLASS imageNamed:imgName];
                     
                     if (img) {
+                        CGSize size = [img size];
+                        TDAssert(!CGSizeEqualToSize(CGSizeZero, size));
+                        
+                        if (size.width > size.height) {
+                            CGFloat ratio = size.height / size.width;
+                            CGFloat h = CGRectGetWidth(imgRect) * ratio;
+                            imgRect.origin.y = round(CGRectGetMidY(imgRect) - h*0.5);
+                            imgRect.size.height = h;
+                        } else {
+                            CGFloat ratio = size.width / size.height;
+                            CGFloat w = CGRectGetHeight(imgRect) * ratio;
+                            imgRect.origin.x = round(CGRectGetMidX(imgRect) - w*0.5);
+                            imgRect.size.width = w;
+                        }
+                        
                         [(id)img drawInRect:imgRect];
                     } else {
                         NSLog(@"could not find image named: %@", imgName);
