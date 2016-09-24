@@ -71,6 +71,10 @@
                      [parser parseString:@"R is for (Rooster)[rooster];" error:nil],
                      [parser parseString:@"H is for (Hen)[hen];" error:nil],
                      [parser parseString:@"P is for (Penguin)[penguin];" error:nil],
+                     [parser parseString:@"E is for (Elephant)[elephant];" error:nil],
+                     [parser parseString:@"L is for (Lion)[lion];" error:nil],
+                     [parser parseString:@"T is for (Tiger)[tiger];" error:nil],
+                     [parser parseString:@"H is for (Hamster)[hamster];" error:nil],
 
                      [parser parseString:@"C is for (Cake)[cake];" error:nil],
                      [parser parseString:@"P is for (Pie)[cherry_pie];" error:nil],
