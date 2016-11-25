@@ -18,6 +18,7 @@
 #define PHRASE_MARGIN_RATIO 0.1
 
 static NSMutableDictionary *sAttrs = nil;
+static FONT_DESC_CLASS *sDesc = nil;
 
 @implementation PageRenderer
 
@@ -26,9 +27,17 @@ static NSMutableDictionary *sAttrs = nil;
         id paraStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] autorelease];
         [paraStyle setAlignment:NSTextAlignmentCenter];
         [paraStyle setLineBreakMode:NSLineBreakByClipping];
+
+        FONT_CLASS *font = [FONT_CLASS fontWithName:@"Times" size:10.0];
+        
+        if (!font) {
+            font = [FONT_CLASS systemFontOfSize:10.0];
+        }
+        
+        sDesc = [[font fontDescriptor] retain];
         
         sAttrs = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                  [FONT_CLASS systemFontOfSize:10.0], NSFontAttributeName,
+                  font, NSFontAttributeName,
                   [COLOR_CLASS blackColor], NSForegroundColorAttributeName,
                   paraStyle, NSParagraphStyleAttributeName,
                   nil];
@@ -58,7 +67,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
         mid = MIN_FONT_SIZE;
     }
     
-    id font = [FONT_CLASS systemFontOfSize:mid];
+    id font = [FONT_CLASS fontWithDescriptor:sDesc size:mid];
     sAttrs[NSFontAttributeName] = font;
     
     NSAttributedString *str = [[[NSAttributedString alloc] initWithString:txt attributes:sAttrs] autorelease];
@@ -108,7 +117,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
             }
         }
         
-        id font = [FONT_CLASS systemFontOfSize:fontSize];
+        id font = [FONT_CLASS fontWithDescriptor:sDesc size:fontSize];
         sAttrs[NSFontAttributeName] = font;
     }
 

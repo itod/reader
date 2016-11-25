@@ -20,5 +20,6 @@
 #import "Utils.h"
 
 #define FONT_CLASS NSFont
+#define FONT_DESC_CLASS NSFontDescriptor
 #define COLOR_CLASS NSColor
 #define IMAGE_CLASS NSImage

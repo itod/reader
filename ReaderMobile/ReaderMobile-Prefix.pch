@@ -21,5 +21,6 @@
 
 #define MOBILE 1
 #define FONT_CLASS UIFont
+#define FONT_DESC_CLASS UIFontDescriptor
 #define COLOR_CLASS UIColor
 #define IMAGE_CLASS UIImage
