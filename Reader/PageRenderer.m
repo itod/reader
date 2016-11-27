@@ -28,7 +28,7 @@ static FONT_DESC_CLASS *sDesc = nil;
         [paraStyle setAlignment:NSTextAlignmentCenter];
         [paraStyle setLineBreakMode:NSLineBreakByClipping];
 
-        FONT_CLASS *font = [FONT_CLASS fontWithName:@"Times" size:10.0];
+        FONT_CLASS *font = [FONT_CLASS fontWithName:@"Helvetica" size:10.0];
         
         if (!font) {
             font = [FONT_CLASS systemFontOfSize:10.0];
