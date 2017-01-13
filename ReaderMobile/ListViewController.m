@@ -47,6 +47,24 @@
     StoryParser *parser = [[[StoryParser alloc] initWithDelegate:ass] autorelease];
 
     self.stories = @[
+                     [parser parseString:@"(Mrs. Potts)[mrspotts] is from (Great Britain)[british_flag];" error:nil],
+                     [parser parseString:@"(Merida)[merida] is from (Ireland)[irish_flag];" error:nil],
+                     [parser parseString:@"(Lumiere)[lumiere] is from (France)[french_flag];" error:nil],
+                     [parser parseString:@"(Rapunzel)[rapunzel] is from (Germany)[german_flag];" error:nil],
+                     [parser parseString:@"(Hercules)[hercules] is from (Greece)[greek_flag];" error:nil],
+                     [parser parseString:@"(Belle)[belle] is from (France)[french_flag];" error:nil],
+                     [parser parseString:@"(Cogsworth)[cogsworth] is from (Great Britain)[british_flag];" error:nil],
+                     [parser parseString:@"(Elsa)[elsa] is from (Norway)[norwegian_flag];" error:nil],
+                     [parser parseString:@"(Gaston)[gaston] is from (France)[french_flag];" error:nil],
+                     [parser parseString:@"(Mulan)[mulan] is from (China)[chinese_flag];" error:nil],
+                     [parser parseString:@"(Flynn)[flynn] is from (Germany)[german_flag];" error:nil],
+                     [parser parseString:@"(Anna)[anna] is from (Norway)[norwegian_flag];" error:nil],
+                     [parser parseString:@"(Maurice)[maurice] is from (France)[french_flag];" error:nil],
+                     [parser parseString:@"(Snow White)[snow_white] is from (Germany)[german_flag];" error:nil],
+                     [parser parseString:@"(Olaf)[olaf] is from (Norway)[norwegian_flag];" error:nil],
+                     [parser parseString:@"(Mushu)[mushu] is from (China)[chinese_flag];" error:nil],
+
+                     
                      [parser parseString:@"E is for (Egg)[egg];" error:nil],
                      [parser parseString:@"C is for (Crayon)[crayon];" error:nil],
                      [parser parseString:@"G is for (Glasses)[eye_glasses];" error:nil],
