@@ -11,4 +11,5 @@
 @interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, assign) NSUInteger selectedPageIndex;
 @end

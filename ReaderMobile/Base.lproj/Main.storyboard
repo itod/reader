@@ -22,14 +22,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WPh-5v-ZfP" customClass="PrevNextButton">
-                                        <rect key="frame" x="0.0" y="289" width="44" height="44"/>
+                                        <rect key="frame" x="0.0" y="245" width="44" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="prevPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oZZ-S4-otI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZnQ-ph-4Hf" customClass="PrevNextButton">
-                                        <rect key="frame" x="331" y="289" width="44" height="44"/>
+                                        <rect key="frame" x="331" y="245" width="44" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <connections>
                                             <action selector="nextPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i5I-LK-Q79"/>

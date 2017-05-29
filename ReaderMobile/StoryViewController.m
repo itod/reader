@@ -7,6 +7,7 @@
 //
 
 #import "StoryViewController.h"
+#import "ListViewController.h"
 #import "Story.h"
 #import "PageView.h"
 #import "PrevNextButton.h"
@@ -79,6 +80,11 @@
 
 
 - (IBAction)back:(id)sender {
+    ListViewController *lvc = (id)self.presentingViewController;
+    TDAssert(lvc);
+    lvc.selectedPageIndex = _story.pageIndex;
+    TDAssert(_story);
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

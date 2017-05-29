@@ -17,7 +17,6 @@
 
 @interface ListViewController ()
 @property (nonatomic, retain) Story *story;
-@property (nonatomic, assign) NSUInteger selectedPageIndex;
 @end
 
 @implementation ListViewController
@@ -44,6 +43,8 @@
     TDAssert(self == _tableView.dataSource);
     TDAssert(self == _tableView.delegate);
 
+    self.selectedPageIndex = NSNotFound;
+    
     StoryAssembler *ass = [[[StoryAssembler alloc] init] autorelease];
     StoryParser *parser = [[[StoryParser alloc] initWithDelegate:ass] autorelease];
     
@@ -487,6 +488,25 @@
     
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    TDAssert(_tableView);
+    if (NSNotFound != _selectedPageIndex) {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:_selectedPageIndex inSection:0];
+        [_tableView selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionMiddle];
+    }
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    TDAssert(_tableView);
+    if (NSNotFound != _selectedPageIndex) {
+        NSIndexPath *path = [NSIndexPath indexPathForRow:_selectedPageIndex inSection:0];
+        [_tableView deselectRowAtIndexPath:path animated:YES];
+    }
+}
+
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
@@ -498,7 +518,7 @@
     TDAssert(_selectedPageIndex < [_story.pages count]);
     TDAssert(_selectedPageIndex != NSNotFound);
     _story.pageIndex = _selectedPageIndex;
-    svc.story = _story; // _story.pages[_selectedPageIndex];
+    svc.story = _story;
 }
 
 
