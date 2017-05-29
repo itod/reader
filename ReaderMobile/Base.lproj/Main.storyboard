@@ -25,8 +25,7 @@
                                         <rect key="frame" x="0.0" y="289" width="44" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <connections>
-                                            <action selector="nextPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uLX-ai-p3x"/>
-                                            <action selector="prevPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vVz-Dl-FY2"/>
+                                            <action selector="prevPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oZZ-S4-otI"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZnQ-ph-4Hf" customClass="PrevNextButton">
@@ -58,7 +57,9 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="nextButton" destination="ZnQ-ph-4Hf" id="mbX-JI-tdH"/>
                         <outlet property="pageView" destination="4VZ-zI-TDh" id="gHu-Ab-3iO"/>
+                        <outlet property="prevButton" destination="WPh-5v-ZfP" id="3Ie-UR-7hh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

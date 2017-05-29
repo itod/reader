@@ -17,6 +17,9 @@
 - (void)forward:(NSInteger)pages;
 - (void)reset;
 
+- (BOOL)isFirstPage;
+- (BOOL)isLastPage;
+
 - (NSMutableString *)text;
 
 @property (nonatomic, copy) NSArray *pages;

@@ -9,6 +9,7 @@
 #import "StoryViewController.h"
 #import "Story.h"
 #import "PageView.h"
+#import "PrevNextButton.h"
 
 @interface StoryViewController ()
 
@@ -18,6 +19,8 @@
 
 - (void)dealloc {
     self.pageView = nil;
+    self.prevButton = nil;
+    self.nextButton = nil;
     self.story = nil;
     [super dealloc];
 }
@@ -69,6 +72,9 @@
     Page *page = [_story currentPage];
     self.pageView.page = page;
     [self.pageView setNeedsDisplay];
+
+    self.prevButton.enabled = !_story.isFirstPage;
+    self.nextButton.enabled = !_story.isLastPage;
 }
 
 

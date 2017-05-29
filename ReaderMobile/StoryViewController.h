@@ -10,6 +10,7 @@
 
 @class  Story;
 @class  PageView;
+@class PrevNextButton;
 
 @interface StoryViewController : UIViewController
 
@@ -19,6 +20,8 @@
 - (IBAction)back:(id)sender;
 
 @property (nonatomic, retain) IBOutlet PageView *pageView;
+@property (nonatomic, retain) IBOutlet PrevNextButton *prevButton;
+@property (nonatomic, retain) IBOutlet PrevNextButton *nextButton;
 @property (nonatomic, retain) Story *story;
 @end
 

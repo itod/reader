@@ -111,6 +111,16 @@
 }
 
 
+- (BOOL)isFirstPage {
+    return self.pageIndex < 1;
+}
+
+
+- (BOOL)isLastPage {
+    return self.pageIndex >= [_pages count]-1;
+}
+
+
 - (void)reset {
     self.pageIndex = -1;
 }

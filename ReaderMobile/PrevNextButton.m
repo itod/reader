@@ -13,7 +13,21 @@
 
 @implementation PrevNextButton
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.adjustsImageWhenDisabled = YES;
+}
+
+
+- (void)setHighlighted:(BOOL)highlighted {
+    [super setHighlighted:highlighted];
+    [self setNeedsDisplay];
+}
+
+
 - (void)drawRect:(CGRect)rect {
+    if (!self.isEnabled) return;
+
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     CGRect iconRect = [self iconRectForBounds:self.bounds];
@@ -30,7 +44,7 @@
 
     CGContextClosePath(ctx);
 
-    CGContextSetGrayFillColor(ctx, 0.7, 1.0);
+    CGContextSetGrayFillColor(ctx, self.isHighlighted ? 0.4 : 0.7, 1.0);
     CGContextFillPath(ctx);
 }
 
