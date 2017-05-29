@@ -20,6 +20,7 @@
 		D309F7FB1C46D88500ED68C0 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D309F7EE1C46D84900ED68C0 /* PEGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D323D98E1C46DB0F009111AC /* StoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D323D98D1C46DB0F009111AC /* StoryParser.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector"; }; };
 		D323D9951C46DB6E009111AC /* StoryAssembler.m in Sources */ = {isa = PBXBuildFile; fileRef = D323D9941C46DB6E009111AC /* StoryAssembler.m */; };
+		D3550EBD1EDBB5A100C3969C /* PrevNextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D3550EBC1EDBB5A100C3969C /* PrevNextButton.m */; };
 		D3792E021C8526C400DA656E /* Run.m in Sources */ = {isa = PBXBuildFile; fileRef = D3792E011C8526C400DA656E /* Run.m */; };
 		D3C3757A1C46C720002EC404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C375791C46C720002EC404 /* AppDelegate.m */; };
 		D3C3757D1C46C720002EC404 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C3757C1C46C720002EC404 /* main.m */; };
@@ -88,6 +89,13 @@
 			remoteGlobalIDString = D3F8A3DA175817DF00056188;
 			remoteInfo = PEGKit;
 		};
+		D3550EC21EDBB5A300C3969C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D305025D1CE5560F00AB4B68;
+			remoteInfo = PEGKitiOS;
+		};
 		D3DE5CC01C937068008F3366 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
@@ -145,6 +153,8 @@
 		D323D98D1C46DB0F009111AC /* StoryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryParser.m; sourceTree = "<group>"; };
 		D323D9931C46DB6E009111AC /* StoryAssembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryAssembler.h; sourceTree = "<group>"; };
 		D323D9941C46DB6E009111AC /* StoryAssembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryAssembler.m; sourceTree = "<group>"; };
+		D3550EBB1EDBB5A100C3969C /* PrevNextButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrevNextButton.h; sourceTree = "<group>"; };
+		D3550EBC1EDBB5A100C3969C /* PrevNextButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrevNextButton.m; sourceTree = "<group>"; };
 		D3792E001C8526C400DA656E /* Run.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Run.h; sourceTree = "<group>"; };
 		D3792E011C8526C400DA656E /* Run.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Run.m; sourceTree = "<group>"; };
 		D3C375751C46C720002EC404 /* Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -227,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				D309F7EE1C46D84900ED68C0 /* PEGKit.framework */,
+				D3550EC31EDBB5A300C3969C /* PEGKit.framework */,
 				D309F7F01C46D84900ED68C0 /* libPEGKitOSX.a */,
 				D309F7F21C46D84900ED68C0 /* libPEGKitIOS.a */,
 				D309F7F41C46D84900ED68C0 /* PEGKitTests.xctest */,
@@ -296,6 +307,8 @@
 				D3DE5C9F1C936CBA008F3366 /* PageViewController.m */,
 				D3DE5CC31C937272008F3366 /* PageView.h */,
 				D3DE5CC41C937272008F3366 /* PageView.m */,
+				D3550EBB1EDBB5A100C3969C /* PrevNextButton.h */,
+				D3550EBC1EDBB5A100C3969C /* PrevNextButton.m */,
 				D3DE5C981C936CBA008F3366 /* Supporting Files */,
 			);
 			path = ReaderMobile;
@@ -431,6 +444,13 @@
 			remoteRef = D309F7F51C46D84900ED68C0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		D3550EC31EDBB5A300C3969C /* PEGKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = PEGKit.framework;
+			remoteRef = D3550EC21EDBB5A300C3969C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -493,6 +513,7 @@
 				D3DE5CB41C936E1B008F3366 /* PageRenderer.m in Sources */,
 				D3DE5CB71C936E1B008F3366 /* Run.m in Sources */,
 				D3DE5CC91C937F96008F3366 /* ListViewController.m in Sources */,
+				D3550EBD1EDBB5A100C3969C /* PrevNextButton.m in Sources */,
 				D3DE5CB51C936E1B008F3366 /* Phrase.m in Sources */,
 				D3DE5CB31C936E1B008F3366 /* Utils.m in Sources */,
 			);
