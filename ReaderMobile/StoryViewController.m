@@ -1,20 +1,20 @@
 //
-//  PageViewController.m
+//  StoryViewController.m
 //  ReaderMobile
 //
 //  Created by Todd Ditchendorf on 3/11/16.
 //  Copyright © 2016 Todd Ditchendorf. All rights reserved.
 //
 
-#import "PageViewController.h"
+#import "StoryViewController.h"
 #import "Story.h"
 #import "PageView.h"
 
-@interface PageViewController ()
+@interface StoryViewController ()
 
 @end
 
-@implementation PageViewController
+@implementation StoryViewController
 
 - (void)dealloc {
     self.pageView = nil;
@@ -38,8 +38,7 @@
     TDAssert(self.pageView);
     TDAssert(_story);
     
-    [_story reset];
-    [self nextPage:nil];
+    [self displayPage];
 }
 
 
@@ -49,7 +48,10 @@
 - (IBAction)prevPage:(id)sender {
     TDAssertMainThread();
     
+    TDAssert(_story);
+    [_story reverse:1];
     
+    [self displayPage];
 }
 
 
@@ -57,8 +59,13 @@
     TDAssertMainThread();
     
     TDAssert(_story);
-    [_story advance:1];
+    [_story forward:1];
     
+    [self displayPage];
+}
+
+
+- (void)displayPage {
     Page *page = [_story currentPage];
     self.pageView.page = page;
     [self.pageView setNeedsDisplay];

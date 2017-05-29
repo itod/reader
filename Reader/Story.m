@@ -10,7 +10,7 @@
 #import "Page.h"
 
 @interface Story ()
-@property (nonatomic, assign, readwrite) NSInteger pageIndex;
+//@property (nonatomic, assign, readwrite) NSInteger pageIndex;
 @end
 
 @implementation Story
@@ -91,9 +91,19 @@
 }
 
 
-- (void)advance:(NSInteger)pages {
+- (void)reverse:(NSInteger)pages {
     TDAssertMainThread();
+    
+    self.pageIndex -= pages;
+    
+    TDAssert(_pageIndex > -1);
+    TDAssert(_pageIndex < [_pages count]);
+}
 
+
+- (void)forward:(NSInteger)pages {
+    TDAssertMainThread();
+    
     self.pageIndex += pages;
     
     TDAssert(_pageIndex > -1);

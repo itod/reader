@@ -13,11 +13,12 @@
 @interface Story : NSObject <NSCopying, Serializable>
 
 - (Page *)currentPage;
-- (void)advance:(NSInteger)pages;
+- (void)reverse:(NSInteger)pages;
+- (void)forward:(NSInteger)pages;
 - (void)reset;
 
 - (NSMutableString *)text;
 
 @property (nonatomic, copy) NSArray *pages;
-@property (nonatomic, assign, readonly) NSInteger pageIndex;
+@property (nonatomic, assign) NSInteger pageIndex;
 @end

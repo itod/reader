@@ -28,7 +28,7 @@
 		D3C375821C46C720002EC404 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C375801C46C720002EC404 /* MainMenu.xib */; };
 		D3DE5C9A1C936CBA008F3366 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5C991C936CBA008F3366 /* main.m */; };
 		D3DE5C9D1C936CBA008F3366 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5C9C1C936CBA008F3366 /* AppDelegate.m */; };
-		D3DE5CA01C936CBA008F3366 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5C9F1C936CBA008F3366 /* PageViewController.m */; };
+		D3DE5CA01C936CBA008F3366 /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5C9F1C936CBA008F3366 /* StoryViewController.m */; };
 		D3DE5CA31C936CBA008F3366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3DE5CA11C936CBA008F3366 /* Main.storyboard */; };
 		D3DE5CA81C936CBA008F3366 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3DE5CA61C936CBA008F3366 /* LaunchScreen.storyboard */; };
 		D3DE5CB11C936D24008F3366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C3757E1C46C720002EC404 /* Assets.xcassets */; };
@@ -168,8 +168,8 @@
 		D3DE5C991C936CBA008F3366 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D3DE5C9B1C936CBA008F3366 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D3DE5C9C1C936CBA008F3366 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D3DE5C9E1C936CBA008F3366 /* PageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
-		D3DE5C9F1C936CBA008F3366 /* PageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
+		D3DE5C9E1C936CBA008F3366 /* StoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryViewController.h; sourceTree = "<group>"; };
+		D3DE5C9F1C936CBA008F3366 /* StoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoryViewController.m; sourceTree = "<group>"; };
 		D3DE5CA21C936CBA008F3366 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3DE5CA71C936CBA008F3366 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3DE5CA91C936CBA008F3366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -303,8 +303,8 @@
 				D3DE5C9C1C936CBA008F3366 /* AppDelegate.m */,
 				D3DE5CC71C937F96008F3366 /* ListViewController.h */,
 				D3DE5CC81C937F96008F3366 /* ListViewController.m */,
-				D3DE5C9E1C936CBA008F3366 /* PageViewController.h */,
-				D3DE5C9F1C936CBA008F3366 /* PageViewController.m */,
+				D3DE5C9E1C936CBA008F3366 /* StoryViewController.h */,
+				D3DE5C9F1C936CBA008F3366 /* StoryViewController.m */,
 				D3DE5CC31C937272008F3366 /* PageView.h */,
 				D3DE5CC41C937272008F3366 /* PageView.m */,
 				D3550EBB1EDBB5A100C3969C /* PrevNextButton.h */,
@@ -504,7 +504,7 @@
 			files = (
 				D3DE5CB91C936E1B008F3366 /* StoryParser.m in Sources */,
 				D3DE5CC51C937272008F3366 /* PageView.m in Sources */,
-				D3DE5CA01C936CBA008F3366 /* PageViewController.m in Sources */,
+				D3DE5CA01C936CBA008F3366 /* StoryViewController.m in Sources */,
 				D3DE5CB61C936E1B008F3366 /* Page.m in Sources */,
 				D3DE5CBA1C936E1B008F3366 /* StoryAssembler.m in Sources */,
 				D3DE5C9D1C936CBA008F3366 /* AppDelegate.m in Sources */,
