@@ -30,7 +30,7 @@
 
     CGContextClosePath(ctx);
 
-    CGContextSetGrayFillColor(ctx, 0.5, 1.0);
+    CGContextSetGrayFillColor(ctx, 0.7, 1.0);
     CGContextFillPath(ctx);
 }
 
