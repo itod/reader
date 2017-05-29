@@ -9,7 +9,7 @@
 #import "PrevNextButton.h"
 
 #define WIDTH 20.0
-#define HEIGHT 20.0
+#define HEIGHT 30.0
 
 @implementation PrevNextButton
 
@@ -17,18 +17,27 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     CGRect iconRect = [self iconRectForBounds:self.bounds];
-    CGContextMoveToPoint(ctx, CGRectGetMinX(iconRect), CGRectGetMinY(iconRect));
-    CGContextAddLineToPoint(ctx, CGRectGetMinX(iconRect), CGRectGetMaxY(iconRect));
-    CGContextAddLineToPoint(ctx, CGRectGetMaxX(iconRect), CGRectGetMidY(iconRect));
-    CGContextClosePath(ctx);
     
+    if ([self tag]) {
+        CGContextMoveToPoint(ctx, CGRectGetMinX(iconRect), CGRectGetMinY(iconRect));
+        CGContextAddLineToPoint(ctx, CGRectGetMinX(iconRect), CGRectGetMaxY(iconRect));
+        CGContextAddLineToPoint(ctx, CGRectGetMaxX(iconRect), CGRectGetMidY(iconRect));
+    } else {
+        CGContextMoveToPoint(ctx, CGRectGetMaxX(iconRect), CGRectGetMinY(iconRect));
+        CGContextAddLineToPoint(ctx, CGRectGetMaxX(iconRect), CGRectGetMaxY(iconRect));
+        CGContextAddLineToPoint(ctx, CGRectGetMinX(iconRect), CGRectGetMidY(iconRect));
+    }
+
+    CGContextClosePath(ctx);
+
+    CGContextSetGrayFillColor(ctx, 0.5, 1.0);
     CGContextFillPath(ctx);
 }
 
 
 - (CGRect)iconRectForBounds:(CGRect)bounds {
-    CGFloat x = round(CGRectGetMidX(bounds) - WIDTH);
-    CGFloat y = round(CGRectGetMidY(bounds) - HEIGHT);
+    CGFloat x = round(CGRectGetMidX(bounds) - WIDTH*0.5);
+    CGFloat y = round(CGRectGetMidY(bounds) - HEIGHT*0.5);
     CGFloat w = WIDTH;
     CGFloat h = HEIGHT;
     
