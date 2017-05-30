@@ -470,6 +470,9 @@
 //    @"(Gus)[gus] (loves)[heart] the (day)[day] (time)[clock] (and)[and] the (night)[night] (time.)[clock];"
 //    @"(Belle)[belle] (loves)[heart] the (sun)[sun] (and)[and] the (moon.)[moon];"
 
+                  @"(der Kragen)[collar];"
+                  @"(die Stufe)[stairs];"
+                  @"(die Serviette)[napkin];"
                   @"(der Elch)[moose];"
                   @"(das Sofa)[sofa];"
                   @"(der Hai)[shark];"
