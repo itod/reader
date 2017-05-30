@@ -18,6 +18,25 @@
 		D309F7E31C46D7DC00ED68C0 /* cinderella.story in Resources */ = {isa = PBXBuildFile; fileRef = D309F7E21C46D7DC00ED68C0 /* cinderella.story */; };
 		D309F7F91C46D86C00ED68C0 /* PEGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D309F7EE1C46D84900ED68C0 /* PEGKit.framework */; };
 		D309F7FB1C46D88500ED68C0 /* PEGKit.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = D309F7EE1C46D84900ED68C0 /* PEGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D31550921EDDEB7100FA9954 /* StoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D323D98D1C46DB0F009111AC /* StoryParser.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector"; }; };
+		D31550931EDDEB7100FA9954 /* PageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5CC41C937272008F3366 /* PageView.m */; };
+		D31550941EDDEB7100FA9954 /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5C9F1C936CBA008F3366 /* StoryViewController.m */; };
+		D31550951EDDEB7100FA9954 /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7C81C46C89E00ED68C0 /* Page.m */; };
+		D31550961EDDEB7100FA9954 /* StoryAssembler.m in Sources */ = {isa = PBXBuildFile; fileRef = D323D9941C46DB6E009111AC /* StoryAssembler.m */; };
+		D31550971EDDEB7100FA9954 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5C9C1C936CBA008F3366 /* AppDelegate.m */; };
+		D31550981EDDEB7100FA9954 /* Story.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7CB1C46C8B000ED68C0 /* Story.m */; };
+		D31550991EDDEB7100FA9954 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5C991C936CBA008F3366 /* main.m */; };
+		D315509A1EDDEB7100FA9954 /* PageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7C51C46C88B00ED68C0 /* PageRenderer.m */; };
+		D315509B1EDDEB7100FA9954 /* Run.m in Sources */ = {isa = PBXBuildFile; fileRef = D3792E011C8526C400DA656E /* Run.m */; };
+		D315509C1EDDEB7100FA9954 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DE5CC81C937F96008F3366 /* ListViewController.m */; };
+		D315509D1EDDEB7100FA9954 /* PrevNextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D3550EBC1EDBB5A100C3969C /* PrevNextButton.m */; };
+		D315509E1EDDEB7100FA9954 /* Phrase.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7CF1C46C9A700ED68C0 /* Phrase.m */; };
+		D315509F1EDDEB7100FA9954 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D309F7DB1C46D3DA00ED68C0 /* Utils.m */; };
+		D31550A11EDDEB7100FA9954 /* libPEGKitIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D309F7F21C46D84900ED68C0 /* libPEGKitIOS.a */; };
+		D31550A31EDDEB7100FA9954 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3DE5CA61C936CBA008F3366 /* LaunchScreen.storyboard */; };
+		D31550A41EDDEB7100FA9954 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C3757E1C46C720002EC404 /* Assets.xcassets */; };
+		D31550A51EDDEB7100FA9954 /* cinderella.story in Resources */ = {isa = PBXBuildFile; fileRef = D309F7E21C46D7DC00ED68C0 /* cinderella.story */; };
+		D31550A61EDDEB7100FA9954 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3DE5CA11C936CBA008F3366 /* Main.storyboard */; };
 		D323D98E1C46DB0F009111AC /* StoryParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D323D98D1C46DB0F009111AC /* StoryParser.m */; settings = {COMPILER_FLAGS = "-Wno-undeclared-selector"; }; };
 		D323D9951C46DB6E009111AC /* StoryAssembler.m in Sources */ = {isa = PBXBuildFile; fileRef = D323D9941C46DB6E009111AC /* StoryAssembler.m */; };
 		D3550EBD1EDBB5A100C3969C /* PrevNextButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D3550EBC1EDBB5A100C3969C /* PrevNextButton.m */; };
@@ -89,6 +108,13 @@
 			remoteGlobalIDString = D3F8A3DA175817DF00056188;
 			remoteInfo = PEGKit;
 		};
+		D31550901EDDEB7100FA9954 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D317C12A18D1F5EB0036BE75;
+			remoteInfo = libPEGKitIOS;
+		};
 		D3550EC21EDBB5A300C3969C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */;
@@ -113,6 +139,16 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D309F7FB1C46D88500ED68C0 /* PEGKit.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D31550A71EDDEB7100FA9954 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +185,8 @@
 		D309F7DB1C46D3DA00ED68C0 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		D309F7E21C46D7DC00ED68C0 /* cinderella.story */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cinderella.story; path = res/cinderella.story; sourceTree = SOURCE_ROOT; };
 		D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEGKit.xcodeproj; path = lib/PEGKit/PEGKit.xcodeproj; sourceTree = "<group>"; };
+		D31550AB1EDDEB7100FA9954 /* Deutsch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deutsch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D31550AC1EDDEB7100FA9954 /* ReaderMobile copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ReaderMobile copy-Info.plist"; path = "/Users/itod/work/github/reader/ReaderMobile copy-Info.plist"; sourceTree = "<absolute>"; };
 		D323D98C1C46DB0F009111AC /* StoryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryParser.h; sourceTree = "<group>"; };
 		D323D98D1C46DB0F009111AC /* StoryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryParser.m; sourceTree = "<group>"; };
 		D323D9931C46DB6E009111AC /* StoryAssembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryAssembler.h; sourceTree = "<group>"; };
@@ -181,6 +219,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D31550A01EDDEB7100FA9954 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D31550A11EDDEB7100FA9954 /* libPEGKitIOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3C375721C46C720002EC404 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -256,6 +302,7 @@
 				D3C375771C46C720002EC404 /* ReaderMac */,
 				D3DE5C971C936CBA008F3366 /* ReaderMobile */,
 				D3C375761C46C720002EC404 /* Products */,
+				D31550AC1EDDEB7100FA9954 /* ReaderMobile copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -264,6 +311,7 @@
 			children = (
 				D3C375751C46C720002EC404 /* Reader.app */,
 				D3DE5C961C936CBA008F3366 /* Reader.app */,
+				D31550AB1EDDEB7100FA9954 /* Deutsch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,6 +375,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D315508E1EDDEB7100FA9954 /* ReaderMobileDE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D31550A81EDDEB7100FA9954 /* Build configuration list for PBXNativeTarget "ReaderMobileDE" */;
+			buildPhases = (
+				D31550911EDDEB7100FA9954 /* Sources */,
+				D31550A01EDDEB7100FA9954 /* Frameworks */,
+				D31550A21EDDEB7100FA9954 /* Resources */,
+				D31550A71EDDEB7100FA9954 /* Copy Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D315508F1EDDEB7100FA9954 /* PBXTargetDependency */,
+			);
+			name = ReaderMobileDE;
+			productName = ReaderMobile;
+			productReference = D31550AB1EDDEB7100FA9954 /* Deutsch.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D3C375741C46C720002EC404 /* ReaderMac */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3C375861C46C720002EC404 /* Build configuration list for PBXNativeTarget "ReaderMac" */;
@@ -374,6 +441,9 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Todd Ditchendorf";
 				TargetAttributes = {
+					D315508E1EDDEB7100FA9954 = {
+						DevelopmentTeam = 9867TNT66D;
+					};
 					D3C375741C46C720002EC404 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -404,6 +474,7 @@
 			targets = (
 				D3C375741C46C720002EC404 /* ReaderMac */,
 				D3DE5C951C936CBA008F3366 /* ReaderMobile */,
+				D315508E1EDDEB7100FA9954 /* ReaderMobileDE */,
 			);
 		};
 /* End PBXProject section */
@@ -454,6 +525,17 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D31550A21EDDEB7100FA9954 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D31550A31EDDEB7100FA9954 /* LaunchScreen.storyboard in Resources */,
+				D31550A41EDDEB7100FA9954 /* Assets.xcassets in Resources */,
+				D31550A51EDDEB7100FA9954 /* cinderella.story in Resources */,
+				D31550A61EDDEB7100FA9954 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3C375731C46C720002EC404 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -479,6 +561,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D31550911EDDEB7100FA9954 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D31550921EDDEB7100FA9954 /* StoryParser.m in Sources */,
+				D31550931EDDEB7100FA9954 /* PageView.m in Sources */,
+				D31550941EDDEB7100FA9954 /* StoryViewController.m in Sources */,
+				D31550951EDDEB7100FA9954 /* Page.m in Sources */,
+				D31550961EDDEB7100FA9954 /* StoryAssembler.m in Sources */,
+				D31550971EDDEB7100FA9954 /* AppDelegate.m in Sources */,
+				D31550981EDDEB7100FA9954 /* Story.m in Sources */,
+				D31550991EDDEB7100FA9954 /* main.m in Sources */,
+				D315509A1EDDEB7100FA9954 /* PageRenderer.m in Sources */,
+				D315509B1EDDEB7100FA9954 /* Run.m in Sources */,
+				D315509C1EDDEB7100FA9954 /* ListViewController.m in Sources */,
+				D315509D1EDDEB7100FA9954 /* PrevNextButton.m in Sources */,
+				D315509E1EDDEB7100FA9954 /* Phrase.m in Sources */,
+				D315509F1EDDEB7100FA9954 /* Utils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3C375711C46C720002EC404 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -527,6 +630,11 @@
 			name = PEGKit;
 			targetProxy = D309F7F71C46D85800ED68C0 /* PBXContainerItemProxy */;
 		};
+		D315508F1EDDEB7100FA9954 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libPEGKitIOS;
+			targetProxy = D31550901EDDEB7100FA9954 /* PBXContainerItemProxy */;
+		};
 		D3DE5CC11C937068008F3366 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = libPEGKitIOS;
@@ -562,6 +670,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D31550A91EDDEB7100FA9954 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9867TNT66D;
+				GCC_PREFIX_HEADER = "ReaderMobile/ReaderMobile-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					lib/PEGKit/src,
+					lib/PEGKit/include,
+				);
+				INFOPLIST_FILE = "ReaderMobile copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.celestialteapot.ReaderMobileDE;
+				PRODUCT_NAME = Deutsch;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		D31550AA1EDDEB7100FA9954 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9867TNT66D;
+				GCC_PREFIX_HEADER = "ReaderMobile/ReaderMobile-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					lib/PEGKit/src,
+					lib/PEGKit/include,
+				);
+				INFOPLIST_FILE = "ReaderMobile copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.celestialteapot.ReaderMobileDE;
+				PRODUCT_NAME = Deutsch;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		D3C375841C46C720002EC404 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -721,6 +876,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D31550A81EDDEB7100FA9954 /* Build configuration list for PBXNativeTarget "ReaderMobileDE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D31550A91EDDEB7100FA9954 /* Debug */,
+				D31550AA1EDDEB7100FA9954 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D3C375701C46C720002EC404 /* Build configuration list for PBXProject "Reader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
