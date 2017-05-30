@@ -17,30 +17,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" id="4VZ-zI-TDh" userLabel="pageView" customClass="PageView">
+                            <view contentMode="scaleToFill" misplaced="YES" id="VEb-ea-kH7" customClass="PageView">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WPh-5v-ZfP" customClass="PrevNextButton">
-                                        <rect key="frame" x="0.0" y="245" width="44" height="88"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cuj-j8-3wd">
+                                        <rect key="frame" x="50" y="0.0" width="274" height="623"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <connections>
-                                            <action selector="prevPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oZZ-S4-otI"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZnQ-ph-4Hf" customClass="PrevNextButton">
-                                        <rect key="frame" x="331" y="245" width="44" height="88"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <connections>
-                                            <action selector="nextPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i5I-LK-Q79"/>
+                                            <action selector="toggleText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GF6-33-3vz"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="pageRenderer" destination="UJy-wo-zWJ" id="Wgg-hI-LSj"/>
+                                    <outlet property="pageRenderer" destination="UJy-wo-zWJ" id="9x7-Db-arU"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WPh-5v-ZfP" customClass="PrevNextButton">
+                                <rect key="frame" x="0.0" y="289" width="44" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="prevPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oZZ-S4-otI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZnQ-ph-4Hf" customClass="PrevNextButton">
+                                <rect key="frame" x="331" y="289" width="44" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="nextPage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i5I-LK-Q79"/>
+                                </connections>
+                            </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hHZ-8l-2QS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -58,18 +65,14 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="nextButton" destination="ZnQ-ph-4Hf" id="mbX-JI-tdH"/>
-                        <outlet property="pageView" destination="4VZ-zI-TDh" id="gHu-Ab-3iO"/>
+                        <outlet property="pageView" destination="VEb-ea-kH7" id="qUU-hg-EAS"/>
                         <outlet property="prevButton" destination="WPh-5v-ZfP" id="3Ie-UR-7hh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <customObject id="UJy-wo-zWJ" customClass="PageRenderer">
-                    <connections>
-                        <outlet property="delegate" destination="4VZ-zI-TDh" id="igF-fW-Pj7"/>
-                    </connections>
-                </customObject>
+                <customObject id="UJy-wo-zWJ" customClass="PageRenderer"/>
             </objects>
-            <point key="canvasLocation" x="787" y="354"/>
+            <point key="canvasLocation" x="786.5" y="353.5"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="TsS-P2-sMb">

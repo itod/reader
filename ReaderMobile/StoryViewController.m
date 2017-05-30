@@ -9,6 +9,7 @@
 #import "StoryViewController.h"
 #import "ListViewController.h"
 #import "Story.h"
+#import "Page.h"
 #import "PageView.h"
 #import "PrevNextButton.h"
 
@@ -42,6 +43,7 @@
     TDAssert(self.pageView);
     TDAssert(_story);
     
+    self.hiddenTextEnabled = YES;
     [self displayPage];
 }
 
@@ -69,13 +71,28 @@
 }
 
 
+- (IBAction)toggleText:(id)sender {
+    Page *page = [_story currentPage];
+    page.textHidden = !page.textHidden;
+
+    [self renderPage];
+}
+
+
 - (void)displayPage {
     Page *page = [_story currentPage];
+    page.textHidden = self.hiddenTextEnabled;
     self.pageView.page = page;
-    [self.pageView setNeedsDisplay];
-
+    
     self.prevButton.enabled = !_story.isFirstPage;
     self.nextButton.enabled = !_story.isLastPage;
+
+    [self renderPage];
+}
+
+
+- (void)renderPage {
+    [self.pageView setNeedsDisplay];
 }
 
 

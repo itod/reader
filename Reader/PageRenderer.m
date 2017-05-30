@@ -127,7 +127,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
         CGRect r = CGRectMake(CGRectGetMinX(bounds), y, CGRectGetWidth(bounds), runHeight);
         //CGContextStrokeRect(ctx, r);
         
-        [self renderRun:run inContext:ctx rect:r];
+        [self renderRun:run showText:!page.textHidden inContext:ctx rect:r];
         
         y += runHeight + RUN_MARGIN_Y_RATIO*runHeight;
     }
@@ -135,7 +135,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
 
 
 
-- (void)renderRun:(Run *)run inContext:(CGContextRef)ctx rect:(CGRect)r {
+- (void)renderRun:(Run *)run showText:(BOOL)showText inContext:(CGContextRef)ctx rect:(CGRect)r {
     NSUInteger phraseCount = [run.phrases count];
     CGFloat availWidth = round(CGRectGetWidth(r));
     CGFloat phraseMargin = availWidth * PHRASE_MARGIN_RATIO;
@@ -235,8 +235,10 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
                     }
                 }
                 
-                NSAttributedString *str = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
-                [str drawInRect:phraseRect];
+                if (showText) {
+                    NSAttributedString *str = [[[NSAttributedString alloc] initWithString:phrase.text attributes:sAttrs] autorelease];
+                    [str drawInRect:phraseRect];
+                }
 
                 ++i;
             }

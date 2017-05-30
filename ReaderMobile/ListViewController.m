@@ -477,7 +477,7 @@
                   @"(die Spielkarte)[card];"
                   @"(das Heu)[hay];"
                   @"(der Knochen)[bone];"
-                  @"(das Fernglas/die Ferngläser)[binoculars];"
+                  @"(das Fernglas)[binoculars];"
                   @"(die Rutschbahn)[slide];"
                   @"(der Pfau)[peacock];"
                   @"(die Pyramide)[pyramid];"

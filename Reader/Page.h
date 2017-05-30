@@ -14,4 +14,5 @@
 - (NSMutableString *)text;
 
 @property (nonatomic, copy) NSArray *phrases;
+@property (nonatomic, assign) BOOL textHidden;
 @end
