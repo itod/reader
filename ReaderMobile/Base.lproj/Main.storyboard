@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cuj-j8-3wd">
-                                        <rect key="frame" x="50" y="0.0" width="274" height="623"/>
+                                        <rect key="frame" x="60" y="0.0" width="255" height="623"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <connections>
                                             <action selector="toggleText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GF6-33-3vz"/>
