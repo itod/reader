@@ -470,6 +470,8 @@
 //    @"(Gus)[gus] (loves)[heart] the (day)[day] (time)[clock] (and)[and] the (night)[night] (time.)[clock];"
 //    @"(Belle)[belle] (loves)[heart] the (sun)[sun] (and)[and] the (moon.)[moon];"
 
+                  @"(die Schulter)[shoulder];"
+                  @"(die Lunge)[lungs];"
                   @"(das Flugzeug)[airplane];"
                   @"(der Panzer)[tank];"
                   @"(das Herz)[heart];"
