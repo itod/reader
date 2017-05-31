@@ -186,7 +186,7 @@
 		D309F7E21C46D7DC00ED68C0 /* cinderella.story */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cinderella.story; path = res/cinderella.story; sourceTree = SOURCE_ROOT; };
 		D309F7E51C46D84900ED68C0 /* PEGKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = PEGKit.xcodeproj; path = lib/PEGKit/PEGKit.xcodeproj; sourceTree = "<group>"; };
 		D31550AB1EDDEB7100FA9954 /* Deutsch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deutsch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D31550AC1EDDEB7100FA9954 /* ReaderMobile copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ReaderMobile copy-Info.plist"; path = "/Users/itod/work/github/reader/ReaderMobile copy-Info.plist"; sourceTree = "<absolute>"; };
+		D31550AC1EDDEB7100FA9954 /* ReaderMobileDE-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ReaderMobileDE-Info.plist"; path = "/Users/itod/work/github/reader/ReaderMobileDE-Info.plist"; sourceTree = "<absolute>"; };
 		D323D98C1C46DB0F009111AC /* StoryParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryParser.h; sourceTree = "<group>"; };
 		D323D98D1C46DB0F009111AC /* StoryParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryParser.m; sourceTree = "<group>"; };
 		D323D9931C46DB6E009111AC /* StoryAssembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryAssembler.h; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		D3DE5C9F1C936CBA008F3366 /* StoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoryViewController.m; sourceTree = "<group>"; };
 		D3DE5CA21C936CBA008F3366 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3DE5CA71C936CBA008F3366 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D3DE5CA91C936CBA008F3366 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3DE5CA91C936CBA008F3366 /* ReaderMobile-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReaderMobile-Info.plist"; sourceTree = "<group>"; };
 		D3DE5CB21C936D3D008F3366 /* ReaderMobile-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReaderMobile-Prefix.pch"; sourceTree = "<group>"; };
 		D3DE5CC31C937272008F3366 /* PageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageView.h; sourceTree = "<group>"; };
 		D3DE5CC41C937272008F3366 /* PageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageView.m; sourceTree = "<group>"; };
@@ -302,7 +302,6 @@
 				D3C375771C46C720002EC404 /* ReaderMac */,
 				D3DE5C971C936CBA008F3366 /* ReaderMobile */,
 				D3C375761C46C720002EC404 /* Products */,
-				D31550AC1EDDEB7100FA9954 /* ReaderMobile copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -365,7 +364,8 @@
 		D3DE5C981C936CBA008F3366 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D3DE5CA91C936CBA008F3366 /* Info.plist */,
+				D3DE5CA91C936CBA008F3366 /* ReaderMobile-Info.plist */,
+				D31550AC1EDDEB7100FA9954 /* ReaderMobileDE-Info.plist */,
 				D3DE5C991C936CBA008F3366 /* main.m */,
 				D3DE5CB21C936D3D008F3366 /* ReaderMobile-Prefix.pch */,
 			);
@@ -682,7 +682,7 @@
 					lib/PEGKit/src,
 					lib/PEGKit/include,
 				);
-				INFOPLIST_FILE = "ReaderMobile copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ReaderMobileDE-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.celestialteapot.ReaderMobileDE;
@@ -705,7 +705,7 @@
 					lib/PEGKit/src,
 					lib/PEGKit/include,
 				);
-				INFOPLIST_FILE = "ReaderMobile copy-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/ReaderMobileDE-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.celestialteapot.ReaderMobileDE;
@@ -839,7 +839,7 @@
 					lib/PEGKit/src,
 					lib/PEGKit/include,
 				);
-				INFOPLIST_FILE = ReaderMobile/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ReaderMobile/ReaderMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.celestialteapot.ReaderMobile;
@@ -861,7 +861,7 @@
 					lib/PEGKit/src,
 					lib/PEGKit/include,
 				);
-				INFOPLIST_FILE = ReaderMobile/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ReaderMobile/ReaderMobile-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.celestialteapot.ReaderMobile;
