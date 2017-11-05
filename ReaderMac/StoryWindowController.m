@@ -57,7 +57,7 @@
     TDAssertMainThread();
  
     TDAssert(_story);
-    [_story advance:1];
+    [_story forward:1];
     
     Page *page = [_story currentPage];
     _pageView.page = page;
