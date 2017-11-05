@@ -229,7 +229,7 @@ static CGFloat TDStringBinarySearch(NSString *txt, CGFloat availWidth, double hi
                             imgRect.size.width = w;
                         }
                         
-                        [(id)img drawInRect:imgRect];
+                        [(IMAGE_CLASS *)img drawInRect:imgRect];
                     } else {
                         NSLog(@"could not find image named: %@", imgName);
                     }
